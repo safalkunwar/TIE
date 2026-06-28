@@ -1,0 +1,244 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Surface tokens (mirror tailwind config for raw CSS use) */
+  --ink: #070b14;
+  --ink-soft: #0e1422;
+  --gold: #d4af37;
+  --gold-bright: #f4cf57;
+  --electric: #5b8cff;
+  --violet: #9b6bff;
+  --mist: #e8ecf5;
+}
+
+@layer base {
+  * {
+    @apply border-ink-line;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ink text-mist font-sans antialiased;
+    background-color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* Lenis: required so it doesn't fight native scroll behavior */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  ::selection {
+    background: rgba(212, 175, 55, 0.28);
+    color: #fff;
+  }
+
+  /* Focus visibility for keyboard users */
+  :focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--ink);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #1c2740, #2a3a5e);
+    border-radius: 8px;
+    border: 2px solid var(--ink);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #364a73;
+  }
+}
+
+@layer components {
+  /* Glassmorphism surface */
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid rgba(255, 255,255, 0.08);
+  }
+  .glass-strong {
+    background: rgba(13, 18, 32, 0.72);
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Gradient text */
+  .text-gradient-gold {
+    background: linear-gradient(120deg, #f4cf57 0%, #d4af37 50%, #b8902a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .text-gradient-aurora {
+    background: linear-gradient(
+      110deg,
+      #e8ecf5 0%,
+      #5b8cff 38%,
+      #9b6bff 62%,
+      #f4cf57 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Section spacing & container */
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+  }
+  .section {
+    @apply py-24 sm:py-32;
+  }
+
+  /* Eyebrow label */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.22em] text-gold;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply relative inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold transition-all duration-200 ease-out will-change-transform;
+  }
+  .btn-primary {
+    @apply btn text-ink;
+    background: linear-gradient(120deg, #f4cf57, #d4af37);
+    box-shadow:
+      0 10px 30px -10px rgba(212, 175, 55, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 16px 40px -12px rgba(212, 175, 55, 0.75),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+  .btn-ghost {
+    @apply btn text-mist;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+  }
+  .btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.28);
+    transform: translateY(-2px);
+  }
+
+  /* Card surface */
+  .card {
+    @apply rounded-4xl border border-ink-line bg-ink-card/60 p-7;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 24px 60px -32px rgba(0, 0, 0, 0.85);
+  }
+
+  /* Shimmer line under headings */
+  .rule-gold {
+    @apply h-px w-full opacity-50;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(212, 175, 55, 0.5),
+      transparent
+    );
+  }
+
+  /* Noise overlay (subtle film grain) */
+  .noise::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@layer utilities {
+  /* Scroll-reveal: start hidden, fade-up when .reveal-in is added by IO */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform, opacity;
+  }
+  .reveal.reveal-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* GSAP initial states — hidden until revealed, so no FOUC even if JS is slow */
+  .reveal-init {
+    opacity: 0;
+  }
+  .will-transform {
+    will-change: transform, opacity;
+  }
+
+  /* Hide scrollbar (carousels) */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Mask edges for marquees / carousels */
+  .mask-x {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 8%,
+      #000 92%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 8%,
+      #000 92%,
+      transparent
+    );
+  }
+}
+
+/* Respect reduced motion globally */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-init {
+    opacity: 1 !important;
+  }
+}
