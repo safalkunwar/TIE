@@ -3,6 +3,7 @@
 import SectionHeading from "@/components/ui/SectionHeading";
 import Marquee from "@/components/ui/Marquee";
 import Icon from "@/components/ui/Icon";
+import { company } from "@/data/company";
 
 const credentials = [
   {
@@ -12,7 +13,7 @@ const credentials = [
   },
   {
     title: "ICEF Certified",
-    desc: "IAS 3944 — internationally recognised agency quality standard.",
+    desc: "Recognised internationally as a trusted educational agency.",
     icon: "star" as const,
   },
   {
@@ -36,7 +37,7 @@ export default function SocialProof() {
           title={
             <>
               Credentials that mean{" "}
-              <span className="text-gradient-gold">something.</span>
+              <span className="text-gradient-ocean">something.</span>
             </>
           }
           description="We're not just another agency. Our accreditations and 13-year track record mean your application is in qualified hands."
@@ -48,11 +49,11 @@ export default function SocialProof() {
               key={c.title}
               className="reveal card flex flex-col items-start gap-4 transition-transform duration-300 hover:-translate-y-1"
             >
-              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-gold/10 text-gold">
+              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-ocean/10 text-ocean">
                 <Icon name={c.icon} className="h-6 w-6" />
               </span>
               <div>
-                <h3 className="font-display text-lg font-bold text-mist">
+                <h3 className="font-display text-lg font-bold text-ocean-deep">
                   {c.title}
                 </h3>
                 <p className="mt-1.5 text-sm leading-relaxed text-mist-muted">
@@ -64,14 +65,14 @@ export default function SocialProof() {
         </div>
 
         {/* Partner ribbon */}
-        <div className="mt-14 rounded-4xl border border-ink-line bg-ink-card/40 py-8">
-          <p className="mb-6 text-center text-xs uppercase tracking-[0.25em] text-mist-dim">
+        <div className="mt-14 rounded-4xl border border-ink-line bg-white/60 py-8 shadow-blue-soft backdrop-blur">
+          <p className="mb-6 text-center text-xs uppercase tracking-[0.25em] text-mist-muted">
             Official partners & affiliations
           </p>
           <Marquee
             items={[
               "ECAN",
-              "ICEF · IAS 3944",
+              "ICEF Trusted Agency",
               "British Council",
               "IDP IELTS",
               "PTE Academic",
@@ -80,6 +81,36 @@ export default function SocialProof() {
               "OET",
             ]}
           />
+        </div>
+
+        {/* Follow us strip */}
+        <div className="mt-8 flex flex-col items-center justify-between gap-4 rounded-4xl border border-ink-line bg-gradient-to-br from-sky-100/70 to-sky-200/50 px-7 py-6 sm:flex-row">
+          <div className="text-center sm:text-left">
+            <div className="font-display text-lg font-bold text-ocean-deep">
+              Follow the journey on social
+            </div>
+            <div className="text-sm text-mist-muted">
+              Real admits, scholarship wins & study-abroad tips — daily.
+            </div>
+          </div>
+          <div className="flex gap-3">
+            <a
+              href={company.social.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-ghost px-5 py-2.5"
+            >
+              <span className="text-sm font-bold">f</span> Facebook
+            </a>
+            <a
+              href={company.social.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-ghost px-5 py-2.5"
+            >
+              <span className="text-sm font-bold">IG</span> Instagram
+            </a>
+          </div>
         </div>
       </div>
     </section>

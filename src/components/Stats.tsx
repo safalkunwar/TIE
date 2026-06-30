@@ -20,20 +20,22 @@ function StatCard({
 }) {
   const { value: animated, ref } = useCountUp(value, 2000, decimals ?? 0);
   const display =
-    value >= 1000 ? Math.round(animated).toLocaleString() : animated.toFixed(decimals ?? 0);
+    value >= 1000
+      ? Math.round(animated).toLocaleString()
+      : animated.toFixed(decimals ?? 0);
 
   return (
     <div className="card group relative overflow-hidden">
-      <div className="pointer-events-none absolute -right-8 -top-10 h-32 w-32 rounded-full bg-gold/10 blur-2xl transition-opacity duration-500 group-hover:opacity-100 opacity-0" />
+      <div className="pointer-events-none absolute -right-8 -top-10 h-32 w-32 rounded-full bg-azure/10 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
       <span
         ref={ref}
-        className="font-display text-5xl font-bold tracking-tightest text-gradient-gold sm:text-6xl"
+        className="font-display text-5xl font-bold tracking-tightest text-gradient-ocean sm:text-6xl"
       >
         {prefix}
         {display}
         {suffix}
       </span>
-      <div className="mt-3 text-sm font-semibold uppercase tracking-[0.18em] text-mist">
+      <div className="mt-3 text-sm font-semibold uppercase tracking-[0.18em] text-ocean-deep">
         {label}
       </div>
       <p className="mt-2 text-sm leading-relaxed text-mist-muted">{blurb}</p>

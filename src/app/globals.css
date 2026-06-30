@@ -3,14 +3,15 @@
 @tailwind utilities;
 
 :root {
-  /* Surface tokens (mirror tailwind config for raw CSS use) */
-  --ink: #070b14;
-  --ink-soft: #0e1422;
+  /* Sky-blue surface tokens (mirror tailwind config for raw CSS use) */
+  --sky-50: #f0f7ff;
+  --sky-100: #e1effe;
+  --sky-200: #cde3ff;
+  --ocean: #1e5fb4;
+  --ocean-deep: #0b3d82;
+  --azure: #2b8af0;
   --gold: #d4af37;
   --gold-bright: #f4cf57;
-  --electric: #5b8cff;
-  --violet: #9b6bff;
-  --mist: #e8ecf5;
 }
 
 @layer base {
@@ -26,8 +27,16 @@
   }
 
   body {
-    @apply bg-ink text-mist font-sans antialiased;
-    background-color: var(--ink);
+    @apply font-sans antialiased;
+    color: var(--ocean-deep);
+    background-color: var(--sky-50);
+    background-image: linear-gradient(
+      180deg,
+      #eaf4ff 0%,
+      #dcebff 40%,
+      #c9e0ff 100%
+    );
+    background-attachment: fixed;
     overflow-x: hidden;
   }
 
@@ -44,13 +53,13 @@
   }
 
   ::selection {
-    background: rgba(212, 175, 55, 0.28);
-    color: #fff;
+    background: rgba(43, 138, 240, 0.22);
+    color: var(--ocean-deep);
   }
 
   /* Focus visibility for keyboard users */
   :focus-visible {
-    outline: 2px solid var(--gold);
+    outline: 2px solid var(--azure);
     outline-offset: 3px;
     border-radius: 4px;
   }
@@ -60,48 +69,48 @@
     width: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--ink);
+    background: var(--sky-100);
   }
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #1c2740, #2a3a5e);
+    background: linear-gradient(180deg, #7fb0ff, #2b8af0);
     border-radius: 8px;
-    border: 2px solid var(--ink);
+    border: 2px solid var(--sky-100);
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #364a73;
+    background: #1e5fb4;
   }
 }
 
 @layer components {
-  /* Glassmorphism surface */
+  /* Glassmorphism surface (now light, blue-tinted) */
   .glass {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(18px) saturate(140%);
-    -webkit-backdrop-filter: blur(18px) saturate(140%);
-    border: 1px solid rgba(255, 255,255, 0.08);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.7);
   }
   .glass-strong {
-    background: rgba(13, 18, 32, 0.72);
-    backdrop-filter: blur(24px) saturate(150%);
-    -webkit-backdrop-filter: blur(24px) saturate(150%);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.85);
   }
 
   /* Gradient text */
-  .text-gradient-gold {
-    background: linear-gradient(120deg, #f4cf57 0%, #d4af37 50%, #b8902a 100%);
+  .text-gradient-ocean {
+    background: linear-gradient(110deg, #2b8af0 0%, #1e5fb4 55%, #0b3d82 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
-  .text-gradient-aurora {
-    background: linear-gradient(
-      110deg,
-      #e8ecf5 0%,
-      #5b8cff 38%,
-      #9b6bff 62%,
-      #f4cf57 100%
-    );
+  .text-gradient-azure {
+    background: linear-gradient(110deg, #7fb0ff 0%, #2b8af0 50%, #1e5fb4 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .text-gradient-gold {
+    background: linear-gradient(120deg, #f4cf57 0%, #d4af37 50%, #b8902a 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -117,7 +126,7 @@
 
   /* Eyebrow label */
   .eyebrow {
-    @apply inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.22em] text-gold;
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-ocean;
   }
 
   /* Buttons */
@@ -125,34 +134,33 @@
     @apply relative inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold transition-all duration-200 ease-out will-change-transform;
   }
   .btn-primary {
-    @apply btn text-ink;
-    background: linear-gradient(120deg, #f4cf57, #d4af37);
+    @apply btn text-white;
+    background: linear-gradient(120deg, #2b8af0, #1e5fb4);
     box-shadow:
-      0 10px 30px -10px rgba(212, 175, 55, 0.6),
-      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+      0 10px 30px -10px rgba(30, 95, 180, 0.55),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
   }
   .btn-primary:hover {
     transform: translateY(-2px);
     box-shadow:
-      0 16px 40px -12px rgba(212, 175, 55, 0.75),
-      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      0 16px 40px -12px rgba(30, 95, 180, 0.7),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
   }
   .btn-ghost {
-    @apply btn text-mist;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    @apply btn text-ocean-deep;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(11, 61, 130, 0.18);
   }
   .btn-ghost:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.28);
+    background: #ffffff;
+    border-color: rgba(43, 138, 240, 0.45);
     transform: translateY(-2px);
   }
 
-  /* Card surface */
+  /* Card surface (white floating) */
   .card {
-    @apply rounded-4xl border border-ink-line bg-ink-card/60 p-7;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 24px 60px -32px rgba(0, 0, 0, 0.85);
+    @apply rounded-4xl border border-ink-line bg-white p-7;
+    box-shadow: 0 18px 50px -24px rgba(11, 61, 130, 0.3);
   }
 
   /* Shimmer line under headings */
@@ -161,7 +169,7 @@
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(212, 175, 55, 0.5),
+      rgba(43, 138, 240, 0.5),
       transparent
     );
   }
@@ -172,7 +180,7 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.035;
+    opacity: 0.025;
     mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }

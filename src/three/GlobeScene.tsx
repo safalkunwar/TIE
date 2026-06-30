@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useMemo, useRef, useState } from "react";
+import { Suspense, useMemo, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
@@ -13,15 +13,15 @@ const GLOBE_RADIUS = 2;
 function GlobePoints() {
   const ref = useRef<THREE.Points>(null);
 
-  // Generate fibonacci-sphere points, then color them gold on the "land"
-  // side and faint elsewhere using a coarse land mask (lat bands) — cheap and
-  // reads clearly as a stylised globe without an image texture.
+  // Generate fibonacci-sphere points, then color land points ocean blue and
+  // water points light azure using a coarse land mask — cheap and reads
+  // clearly as a stylised globe without an image texture.
   const geometry = useMemo(() => {
     const count = 3600;
     const positions = new Float32Array(count * 3);
     const colors = new Float32Array(count * 3);
-    const golden = new THREE.Color("#D4AF37");
-    const dim = new THREE.Color("#1c2c4a");
+    const land = new THREE.Color("#1E5FB4"); // ocean blue
+    const dim = new THREE.Color("#A8CCFF"); // light azure for water
     const N = count;
     const phi = Math.PI * (3 - Math.sqrt(5)); // golden angle
 
@@ -37,8 +37,8 @@ function GlobePoints() {
       // Stylised "land": denser patches — use a pseudo-noise from coordinates
       const lat = Math.asin(y) * (180 / Math.PI);
       const lng = Math.atan2(z, x) * (180 / Math.PI);
-      const land = isLand(lat, lng);
-      const c = land ? golden : dim;
+      const landMass = isLand(lat, lng);
+      const c = landMass ? land : dim;
       colors.set([c.r, c.g, c.b], i * 3);
     }
 
@@ -55,10 +55,10 @@ function GlobePoints() {
   return (
     <points ref={ref} geometry={geometry}>
       <pointsMaterial
-        size={0.028}
+        size={0.03}
         vertexColors
         transparent
-        opacity={0.9}
+        opacity={0.95}
         sizeAttenuation
         depthWrite={false}
       />
@@ -81,15 +81,15 @@ function isLand(lat: number, lng: number): boolean {
   return n > 0.05;
 }
 
-/* ---------- Wireframe inner globe ---------- */
+/* ---------- Solid inner globe (light, to back the dotted shell) ---------- */
 function GlobeShell() {
   return (
     <mesh>
       <sphereGeometry args={[GLOBE_RADIUS * 0.99, 48, 48]} />
       <meshBasicMaterial
-        color="#0c1730"
+        color="#EAF4FF"
         transparent
-        opacity={0.55}
+        opacity={0.92}
         side={THREE.FrontSide}
       />
     </mesh>
@@ -101,9 +101,9 @@ function GlobeAtmosphere() {
     <mesh scale={1.18}>
       <sphereGeometry args={[GLOBE_RADIUS, 48, 48]} />
       <meshBasicMaterial
-        color="#5B8CFF"
+        color="#2B8AF0"
         transparent
-        opacity={0.08}
+        opacity={0.12}
         side={THREE.BackSide}
       />
     </mesh>
@@ -202,9 +202,9 @@ function Arcs() {
           object={new THREE.Line(
             geo,
             new THREE.LineBasicMaterial({
-              color: "#D4AF37",
+              color: "#2B8AF0",
               transparent: true,
-              opacity: 0.35,
+              opacity: 0.45,
             }),
           )}
         />

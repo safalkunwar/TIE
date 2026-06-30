@@ -20,7 +20,6 @@ export default function DreamJourney() {
   useEffect(() => {
     if (reduced || !root.current) return;
     const ctx = gsap.context(() => {
-      // Progress bar fills as the timeline scrolls through view
       if (progress.current) {
         gsap.to(progress.current, {
           scaleY: 1,
@@ -35,7 +34,6 @@ export default function DreamJourney() {
         });
       }
 
-      // Each step reveals as it enters
       const steps = root.current!.querySelectorAll<HTMLElement>("[data-step]");
       steps.forEach((step) => {
         gsap.from(step, {
@@ -58,16 +56,16 @@ export default function DreamJourney() {
     <section id="journey" ref={root} className="section relative overflow-hidden">
       <div
         aria-hidden
-        className="pointer-events-none absolute right-0 top-1/4 -z-10 h-[500px] w-[500px] rounded-full opacity-20 blur-[120px]"
-        style={{ background: "radial-gradient(circle, #9B6BFF, transparent 60%)" }}
+        className="pointer-events-none absolute right-0 top-1/4 -z-10 h-[500px] w-[500px] rounded-full opacity-30 blur-[120px]"
+        style={{ background: "radial-gradient(circle, #7fb0ff, transparent 60%)" }}
       />
       <div className="container-x">
         <SectionHeading
           eyebrow="The dream journey"
           title={
             <>
-              From <span className="text-gradient-gold">dream</span> to{" "}
-              <span className="text-gradient-aurora">career success</span>.
+              From <span className="text-gradient-ocean">dream</span> to{" "}
+              <span className="text-gradient-azure">career success</span>.
             </>
           }
           description="Seven milestones, one dedicated team. Here's exactly how we take you from a napkin sketch to a global career."
@@ -75,10 +73,10 @@ export default function DreamJourney() {
 
         <div className="relative mt-16 pl-4 sm:pl-0">
           {/* Vertical track */}
-          <div className="absolute left-[19px] top-2 h-[calc(100%-2rem)] w-px bg-white/10 sm:left-1/2 sm:-translate-x-1/2">
+          <div className="absolute left-[19px] top-2 h-[calc(100%-2rem)] w-px bg-ocean/15 sm:left-1/2 sm:-translate-x-1/2">
             <div
               ref={progress}
-              className="h-full w-full origin-top scale-y-0 bg-gradient-to-b from-gold-bright via-gold to-violet"
+              className="h-full w-full origin-top scale-y-0 bg-gradient-to-b from-azure via-ocean to-ocean-deep"
             />
           </div>
 
@@ -94,7 +92,7 @@ export default function DreamJourney() {
                   }`}
                 >
                   {/* Node dot */}
-                  <span className="absolute left-0 top-1 z-10 grid h-10 w-10 place-items-center rounded-full border border-gold/40 bg-ink text-gold sm:left-1/2 sm:-translate-x-1/2">
+                  <span className="absolute left-0 top-1 z-10 grid h-10 w-10 place-items-center rounded-full border border-azure/40 bg-white text-ocean shadow-card sm:left-1/2 sm:-translate-x-1/2">
                     <Icon name={item.icon as never} className="h-5 w-5" />
                   </span>
 
@@ -110,12 +108,12 @@ export default function DreamJourney() {
                           right ? "" : "sm:flex-row-reverse"
                         }`}
                       >
-                        <span className="font-display text-sm font-bold text-gold">
+                        <span className="font-display text-sm font-bold text-ocean">
                           {item.step}
                         </span>
-                        <span className="h-px flex-1 bg-white/10" />
+                        <span className="h-px flex-1 bg-ocean/15" />
                       </div>
-                      <h3 className="mt-3 font-display text-2xl font-bold text-mist">
+                      <h3 className="mt-3 font-display text-2xl font-bold text-ocean-deep">
                         {item.title}
                       </h3>
                       <p className="mt-2 text-sm leading-relaxed text-mist-muted">

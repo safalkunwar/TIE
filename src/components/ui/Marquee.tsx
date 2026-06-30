@@ -22,7 +22,7 @@ export default function Marquee({ items, className = "" }: Props) {
         {items.map((item) => (
           <span
             key={item}
-            className="text-sm font-medium uppercase tracking-[0.18em] text-mist-muted"
+            className="text-sm font-semibold uppercase tracking-[0.18em] text-mist-muted"
           >
             {item}
           </span>
@@ -43,7 +43,7 @@ export default function Marquee({ items, className = "" }: Props) {
             {items.map((item) => (
               <li
                 key={`${dup}-${item}`}
-                className="text-sm font-medium uppercase tracking-[0.18em] text-mist-muted"
+                className="text-sm font-semibold uppercase tracking-[0.18em] text-mist-muted"
               >
                 {item}
               </li>
