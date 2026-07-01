@@ -20,6 +20,7 @@ export default function DreamJourney() {
   useEffect(() => {
     if (reduced || !root.current) return;
     const ctx = gsap.context(() => {
+      // Progress line fills as the whole journey scrolls through view
       if (progress.current) {
         gsap.to(progress.current, {
           scaleY: 1,
@@ -34,19 +35,36 @@ export default function DreamJourney() {
         });
       }
 
+      // Story reveal: each step fades up + slides in + its node lights up
       const steps = root.current!.querySelectorAll<HTMLElement>("[data-step]");
       steps.forEach((step) => {
-        gsap.from(step, {
-          opacity: 0,
-          y: 40,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: step,
-            start: "top 85%",
-            toggleActions: "play none none none",
-          },
-        });
+        const node = step.querySelector<HTMLElement>("[data-node]");
+        const card = step.querySelector<HTMLElement>("[data-card]");
+
+        gsap.set(card, { opacity: 0, y: 50, scale: 0.96 });
+        gsap.set(node, { scale: 0.6, opacity: 0.5 });
+
+        gsap
+          .timeline({
+            scrollTrigger: {
+              trigger: step,
+              start: "top 75%",
+              end: "bottom 65%",
+              toggleActions: "play none none reverse",
+            },
+          })
+          .to(card, {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            ease: "power3.out",
+          })
+          .to(
+            node,
+            { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(2)" },
+            "-=0.4",
+          );
       });
     }, root);
     return () => ctx.revert();
@@ -68,7 +86,7 @@ export default function DreamJourney() {
               <span className="text-gradient-azure">career success</span>.
             </>
           }
-          description="Seven milestones, one dedicated team. Here's exactly how we take you from a napkin sketch to a global career."
+          description="Seven milestones, one dedicated team. Scroll through the story of how we take you from a napkin sketch to a global career."
         />
 
         <div className="relative mt-16 pl-4 sm:pl-0">
@@ -80,7 +98,7 @@ export default function DreamJourney() {
             />
           </div>
 
-          <ol className="space-y-10 sm:space-y-16">
+          <ol className="space-y-12 sm:space-y-20">
             {journey.map((item, i) => {
               const right = i % 2 === 1;
               return (
@@ -91,18 +109,25 @@ export default function DreamJourney() {
                     right ? "sm:[direction:rtl]" : ""
                   }`}
                 >
-                  {/* Node dot */}
-                  <span className="absolute left-0 top-1 z-10 grid h-10 w-10 place-items-center rounded-full border border-azure/40 bg-white text-ocean shadow-card sm:left-1/2 sm:-translate-x-1/2">
+                  {/* Node dot — lights up as the step enters view */}
+                  <span
+                    data-node
+                    className="absolute left-0 top-1 z-10 grid h-11 w-11 place-items-center rounded-full border-2 border-azure/40 bg-white text-ocean shadow-card sm:left-1/2 sm:-translate-x-1/2"
+                  >
                     <Icon name={item.icon as never} className="h-5 w-5" />
                   </span>
 
-                  {/* Card */}
+                  {/* Card — story reveal */}
                   <div
-                    className={`ml-14 sm:ml-0 ${
-                      right ? "sm:col-start-2 [direction:ltr]" : "sm:text-right sm:pr-8"
+                    className={`ml-16 sm:ml-0 ${
+                      right
+                        ? "sm:col-start-2 [direction:ltr]"
+                        : "sm:text-right sm:pr-8"
                     }`}
                   >
-                    <div className="card reveal">
+                    <div data-card className="card relative overflow-hidden">
+                      {/* shimmer accent on the leading edge */}
+                      <div className="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-azure to-ocean" />
                       <div
                         className={`flex items-center gap-3 ${
                           right ? "" : "sm:flex-row-reverse"
@@ -112,8 +137,11 @@ export default function DreamJourney() {
                           {item.step}
                         </span>
                         <span className="h-px flex-1 bg-ocean/15" />
+                        <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-mist-dim">
+                          Step {i + 1} of {journey.length}
+                        </span>
                       </div>
-                      <h3 className="mt-3 font-display text-2xl font-bold text-ocean-deep">
+                      <h3 className="mt-3 font-display text-2xl font-bold text-mist">
                         {item.title}
                       </h3>
                       <p className="mt-2 text-sm leading-relaxed text-mist-muted">
@@ -122,7 +150,6 @@ export default function DreamJourney() {
                     </div>
                   </div>
 
-                  {/* Spacer on the opposite side for desktop alternating layout */}
                   <div className="hidden sm:block" />
                 </li>
               );

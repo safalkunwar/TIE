@@ -6,10 +6,31 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import MagneticButton from "@/components/ui/MagneticButton";
 import Icon from "@/components/ui/Icon";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useCountUpOnMount } from "@/hooks/useCountUpOnMount";
 import { company } from "@/data/company";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
+}
+
+function YearsStat() {
+  const v = useCountUpOnMount(13, 1800);
+  return (
+    <div
+      data-hero-fade
+      className="glass-strong flex items-center gap-3 rounded-2xl px-4 py-3 shadow-blue-soft"
+    >
+      <span className="font-display text-2xl font-extrabold text-gradient-ocean">
+        {Math.round(v)}+
+      </span>
+      <span className="h-8 w-px bg-mist/15" />
+      <span className="text-xs font-medium leading-tight text-mist-muted">
+        Years
+        <br />
+        of Trust
+      </span>
+    </div>
+  );
 }
 
 export default function Hero() {
@@ -163,7 +184,7 @@ export default function Hero() {
             </span>
           </p>
 
-          {/* CTAs */}
+          {/* CTAs + 13+ Years animated stat beside the headline */}
           <div
             data-hero-fade
             className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
@@ -173,6 +194,7 @@ export default function Hero() {
               <Icon name="globe" className="h-4 w-4" />
               Explore Destinations
             </MagneticButton>
+            <YearsStat />
           </div>
 
           {/* Floating glass stat chips */}
@@ -182,9 +204,9 @@ export default function Hero() {
             className="mt-16 flex flex-wrap gap-3"
           >
             {[
-              { k: "13+ yrs", v: "Trusted in Pokhara" },
-              { k: "97% visa", v: "Success rate" },
+              { k: "97%", v: "Visa success rate" },
               { k: "350+", v: "Partner universities" },
+              { k: "5,000+", v: "Students placed" },
             ].map((chip) => (
               <div
                 key={chip.k}
