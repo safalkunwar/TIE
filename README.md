@@ -1,6 +1,8 @@
 # TIE Nepal — Study Abroad Marketing Website
 
-A modern, interactive website for Target International Education (TIE Nepal), helping students discover study opportunities worldwide. Built with Next.js and featuring a 3D globe, smooth animations, and easy booking.
+A modern, interactive website for Target International Education (TIE Nepal), helping students discover study opportunities worldwide. Built with Next.js and featuring a 3D globe, smooth animations, and a seamless user experience.
+
+**🌐 Live Demo:** https://tie-iota.vercel.app/
 
 ## Quick Start
 
