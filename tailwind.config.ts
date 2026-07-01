@@ -23,16 +23,17 @@ const config: Config = {
         ink: {
           DEFAULT: "#0B2A52",
           soft: "#12305C",
-          line: "rgba(11,61,130,0.12)",
+          line: "rgba(15,23,42,0.10)",
         },
         gold: {
           DEFAULT: "#D4AF37",
           bright: "#F4CF57",
         },
+        // Neutral text colors — dark slate for AA contrast on light bg
         mist: {
-          DEFAULT: "#0B3D82",
-          muted: "#46607F",
-          dim: "#7A8CA3",
+          DEFAULT: "#0F172A", // headings — near-black slate
+          muted: "#475569", // body — slate-600, AA on white
+          dim: "#64748B", // captions — slate-500
         },
       },
       fontFamily: {

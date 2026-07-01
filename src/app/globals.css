@@ -12,6 +12,7 @@
   --azure: #2b8af0;
   --gold: #d4af37;
   --gold-bright: #f4cf57;
+  --ink-strong: #0f172a; /* near-black slate for body text */
 }
 
 @layer base {
@@ -28,14 +29,13 @@
 
   body {
     @apply font-sans antialiased;
-    color: var(--ocean-deep);
+    color: var(--ink-strong);
     background-color: var(--sky-50);
-    background-image: linear-gradient(
-      180deg,
-      #eaf4ff 0%,
-      #dcebff 40%,
-      #c9e0ff 100%
-    );
+    background-image:
+      radial-gradient(60% 50% at 15% 5%, rgba(43,138,240,0.10), transparent 60%),
+      radial-gradient(50% 40% at 95% 15%, rgba(127,176,255,0.14), transparent 60%),
+      radial-gradient(45% 45% at 50% 100%, rgba(30,95,180,0.08), transparent 60%),
+      linear-gradient(180deg, #F4F9FF 0%, #E7F1FE 50%, #F4F9FF 100%);
     background-attachment: fixed;
     overflow-x: hidden;
   }

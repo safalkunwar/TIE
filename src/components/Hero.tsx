@@ -3,7 +3,6 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Image from "next/image";
 import MagneticButton from "@/components/ui/MagneticButton";
 import Icon from "@/components/ui/Icon";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
@@ -18,7 +17,6 @@ export default function Hero() {
   const glow = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
 
-  // Split-text reveal + parallax (runs once on mount)
   useEffect(() => {
     if (!root.current) return;
     const ctx = gsap.context(() => {
@@ -61,7 +59,6 @@ export default function Hero() {
     return () => ctx.revert();
   }, [reduced]);
 
-  // Cursor-follow glow (now azure)
   useEffect(() => {
     if (reduced || !glow.current) return;
     const node = glow.current;
@@ -85,38 +82,36 @@ export default function Hero() {
       ref={root}
       className="noise relative flex min-h-[100svh] items-center overflow-hidden pt-28"
     >
-      {/* Background image — the real TIE team photo */}
-      <div className="absolute inset-0 -z-20" data-hero-parallax>
-        <Image
-          src="/gallery/team.jpg"
-          alt="The Target International Education team — counsellors who guide students to study abroad"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-      </div>
+      {/* === Premium animated gradient mesh background (no photo) === */}
+      <div className="absolute inset-0 -z-20 bg-gradient-to-br from-sky-50 via-white to-sky-100" />
 
-      {/* Blue gradient scrim overlays (replace dark overlays) */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-sky-50/70 via-ocean-deep/55 to-ocean-deep/85" />
-      <div className="absolute inset-0 -z-10 bg-radial-fade" />
-      <div
-        className="absolute inset-0 -z-10 opacity-70"
-        style={{
-          background:
-            "radial-gradient(40% 50% at 18% 30%, rgba(127,176,255,0.45), transparent 60%), radial-gradient(50% 50% at 85% 20%, rgba(43,138,240,0.40), transparent 60%), radial-gradient(45% 55% at 75% 85%, rgba(30,95,180,0.45), transparent 60%)",
-        }}
-      />
+      {/* Animated floating gradient orbs */}
+      {!reduced && (
+        <>
+          <div className="absolute -left-32 top-20 -z-10 h-[500px] w-[500px] animate-float rounded-full bg-gradient-to-br from-azure/30 to-ocean/20 blur-[100px]" />
+          <div
+            className="absolute -right-20 top-40 -z-10 h-[440px] w-[440px] animate-float rounded-full bg-gradient-to-br from-sky-300/40 to-azure/25 blur-[100px]"
+            style={{ animationDelay: "2s" }}
+          />
+          <div
+            className="absolute bottom-0 left-1/3 -z-10 h-[420px] w-[420px] animate-float rounded-full bg-gradient-to-br from-indigo-300/25 to-sky-300/30 blur-[100px]"
+            style={{ animationDelay: "4s" }}
+          />
+        </>
+      )}
 
-      {/* Cursor-follow glow (azure) */}
+      {/* Subtle grid texture overlay */}
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-grid-faint [background-size:64px_64px] opacity-40" />
+
+      {/* Cursor-follow glow */}
       {!reduced && (
         <div
           ref={glow}
           aria-hidden
-          className="pointer-events-none absolute left-0 top-0 -z-10 h-[420px] w-[420px] rounded-full opacity-50 blur-3xl"
+          className="pointer-events-none absolute left-0 top-0 -z-10 h-[420px] w-[420px] rounded-full opacity-40 blur-3xl"
           style={{
             background:
-              "radial-gradient(circle, rgba(127,176,255,0.5), transparent 60%)",
+              "radial-gradient(circle, rgba(43,138,240,0.30), transparent 60%)",
           }}
         />
       )}
@@ -134,19 +129,19 @@ export default function Hero() {
             </span>
           </div>
 
-          {/* Headline with per-word reveal */}
-          <h1 className="font-display text-[clamp(2.6rem,8vw,6.5rem)] font-bold leading-[0.98] tracking-tightest text-white drop-shadow-[0_4px_30px_rgba(11,61,130,0.45)] [perspective:600px]">
+          {/* Headline with per-word reveal — dark text for premium contrast */}
+          <h1 className="font-display text-[clamp(2.6rem,8vw,6.5rem)] font-bold leading-[0.98] tracking-tightest text-mist [perspective:600px]">
             <span className="block">
               {headline.split(" ").map((word, i) => (
                 <span
                   key={i}
                   data-word
                   className={`mr-[0.22em] inline-block ${
-                    word === "Borders." ? "text-gradient-azure" : ""
+                    word === "Borders." ? "text-gradient-ocean" : ""
                   }`}
                   style={
                     word === "Borders."
-                      ? { filter: "drop-shadow(0 4px 24px rgba(127,176,255,0.6))" }
+                      ? { filter: "drop-shadow(0 4px 24px rgba(43,138,240,0.35))" }
                       : undefined
                   }
                 >
@@ -158,12 +153,12 @@ export default function Hero() {
 
           <p
             data-hero-fade
-            className="mt-7 max-w-xl text-lg leading-relaxed text-sky-100 sm:text-xl"
+            className="mt-7 max-w-xl text-lg leading-relaxed text-mist-muted sm:text-xl"
           >
             {company.blurb} Turn your dream of studying abroad into reality —
             expert counselling, university placement, visa support and
             career-focused pathways across 8 destinations.{" "}
-            <span className="font-semibold text-white">
+            <span className="font-semibold text-ocean-deep">
               {company.tagline}.
             </span>
           </p>
@@ -198,8 +193,8 @@ export default function Hero() {
                 <span className="font-display text-lg font-bold text-gradient-ocean">
                   {chip.k}
                 </span>
-                <span className="h-7 w-px bg-ocean/20" />
-                <span className="text-xs font-medium text-ocean-deep/80">
+                <span className="h-7 w-px bg-mist/15" />
+                <span className="text-xs font-medium text-mist-muted">
                   {chip.v}
                 </span>
               </div>
@@ -212,12 +207,12 @@ export default function Hero() {
       {!reduced && (
         <a
           href="#globe"
-          className="absolute bottom-7 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-white/80 transition-colors hover:text-white md:flex"
+          className="absolute bottom-7 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-mist-muted transition-colors hover:text-ocean-deep md:flex"
           aria-label="Scroll to explore"
         >
           <span className="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
-          <span className="flex h-9 w-5 justify-center rounded-full border border-white/40 p-1">
-            <span className="h-2 w-1 animate-float rounded-full bg-white/80" />
+          <span className="flex h-9 w-5 justify-center rounded-full border border-ocean/30 p-1">
+            <span className="h-2 w-1 animate-float rounded-full bg-ocean/60" />
           </span>
         </a>
       )}

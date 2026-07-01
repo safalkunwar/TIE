@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import TrustBanner from "@/components/TrustBanner";
 import Stats from "@/components/Stats";
 import About from "@/components/About";
 import Globe from "@/components/Globe";
@@ -23,6 +24,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <TrustBanner />
         <Stats />
         <About />
         <Globe />
