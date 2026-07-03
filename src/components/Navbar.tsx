@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import MagneticButton from "@/components/ui/MagneticButton";
 import Icon from "@/components/ui/Icon";
 import { company } from "@/data/company";
@@ -51,9 +52,13 @@ export default function Navbar() {
             className="group flex items-center gap-2.5 pl-1"
             aria-label="TIE Nepal home"
           >
-            <span className="relative grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-azure to-ocean text-white shadow-glow">
-              <span className="font-display text-lg font-extrabold">T</span>
-            </span>
+            <Image
+              src="/gallery/tie-logo.png"
+              alt="Target International Education logo"
+              width={42}
+              height={42}
+              className="h-10 w-10 rounded-xl object-contain shadow-blue-soft transition-transform group-hover:scale-105"
+            />
             <span className="flex flex-col leading-none">
               <span className="font-display text-sm font-bold tracking-wide text-ocean-deep">
                 TIE Nepal
@@ -70,7 +75,7 @@ export default function Navbar() {
               <li key={l.href}>
                 <a
                   href={l.href}
-                  className="rounded-full px-4 py-2 text-sm font-medium text-ocean-deep/70 transition-colors hover:bg-white/60 hover:text-ocean-deep"
+                  className="rounded-full px-4 py-2 text-sm font-semibold text-ocean-deep/80 transition-all duration-200 hover:bg-ocean hover:text-white"
                 >
                   {l.label}
                 </a>
@@ -82,7 +87,7 @@ export default function Navbar() {
           <div className="hidden items-center gap-2 lg:flex">
             <a
               href={`tel:${company.contact.telMobile}`}
-              className="rounded-full px-3 py-2 text-sm font-medium text-ocean-deep/70 transition-colors hover:text-ocean-deep"
+              className="rounded-full px-3 py-2 text-sm font-semibold text-ocean-deep/80 transition-all duration-200 hover:bg-ocean hover:text-white"
             >
               {company.contact.mobile}
             </a>
