@@ -1,80 +1,8 @@
-# TIE Nepal — Premium Gen-Z Study-Abroad Experience
+# TIE Nepal to provide  Study-Abroad Experience
 
-A cinematic, conversion-focused marketing website for **Target International Education (TIE Nepal)**, Pokhara — built from the ground up with Next.js, React Three Fiber, GSAP and Tailwind CSS.
+A cinematic website for **Target International Education (TIE Nepal)**, Pokhara — built from the ground up with Next.js, React Three Fiber, GSAP and Tailwind CSS.
 
 ## Quick start
-
-```bash
-cd TIE
-npm install
-npm run dev
-```
-
-Open **http://localhost:3000** in your browser.
-
-## Production build
-
-```bash
-npm run build
-npm start
-```
-
-## Architecture
-
-```
-TIE/
-  src/
-    app/
-      layout.tsx          # Fonts, metadata/OG/JSON-LD, SmoothScroll provider
-      page.tsx            # Homepage composition
-      globals.css         # Tailwind layers, design tokens, glass utilities
-      sitemap.ts          # Dynamic sitemap generation
-    components/
-      Navbar.tsx          # Glass navbar, scroll-aware, mobile sheet
-      Hero.tsx            # Full-screen hero, GSAP split-text, cursor glow
-      Globe.tsx           # Interactive 3D globe wrapper + info panel
-      Stats.tsx           # Animated count-up counters
-      DreamJourney.tsx    # Scroll-driven timeline with GSAP
-      Destinations.tsx    # 8-country parallax card grid
-      Testimonials.tsx    # Netflix-style horizontal snap carousel
-      SocialProof.tsx      # ECAN/ICEF/British Council credentials
-      CTA.tsx             # Consultation booking + WhatsApp + modal form
-      Footer.tsx
-      ui/                 # MagneticButton, Marquee, SectionHeading, Icon
-      providers/SmoothScroll.tsx   # Lenis + GSAP ticker bridge
-    three/
-      GlobeScene.tsx      # R3F canvas, dotted sphere, arcs, pins
-    data/                  # destinations, testimonials, stats, journey
-    hooks/                  # useReveal, useCountUp, useReducedMotion
-    lib/                    # geo (latLngToVector3), seo (metadata + JSON-LD)
-    public/                 # favicon.svg, robots.txt
-```
-
-## Sections (homepage)
-
-1. **Navbar** — Glass, scroll-aware, mobile sheet menu, magnetic CTA
-2. **Hero** — Full-screen campus backdrop, GSAP word-by-word reveal of "Your Future Has No Borders.", cursor-follow glow, gradient mesh, floating stat chips
-3. **Stats** — Animated count-up counters (13+ years, 5,000+ students, 97% visa, 350+ universities)
-4. **Interactive Globe** — R3F dotted sphere, 8 destination pins (pulsing rings), arcs from Pokhara, drag-to-rotate, click-to-inspect info panel
-5. **Destination Explorer** — 8 parallax country cards with stock imagery, tuition, top universities, scholarship badges
-6. **Dream Journey Timeline** — 7-step scroll-driven journey: Dream → Career Success, sticky progress bar
-7. **Testimonials** — Horizontal snap carousel with student cards, photos, quotes, scholarship amounts
-8. **Social Proof** — ECAN, ICEF (IAS 3944), British Council, Govt. Nepal credentials + partner marquee
-9. **CTA / Booking** — Gradient panel, booking modal form (name, phone, email, destination, date), WhatsApp deep link
-10. **Footer** — Contacts, destinations, services, social links
-
-## Design system
-
-| Token | Value | Purpose |
-|-------|-------|---------|
-| `ink` | `#070B14` | Midnight base background |
-| `gold` | `#D4AF37` | Brand heritage accent, CTAs |
-| `electric` | `#5B8CFF` | "Future/global" gradient accent |
-| `violet` | `#9B6BFF` | Aurora gradient endpoint |
-| `mist` | `#E8ECF5` | Body text |
-| Glass | `rgba(255,255,255,0.05)` + blur 18px | Card surfaces |
-
-Typography: **Sora** (display/headlines), **Inter** (body). Display up to `clamp(2.6rem, 8vw, 6.5rem)`.
 
 ## Tech stack
 
