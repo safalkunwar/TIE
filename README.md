@@ -1,7 +1,8 @@
 # TIE Nepal to provide  Study-Abroad Experience
 
 A cinematic website for **Target International Education (TIE Nepal)**, Pokhara — built from the ground up with Next.js, React Three Fiber, GSAP and Tailwind CSS.
-
+Here's the link for blue-branch and for another do visit the about section
+https://tie-git-sky-blue-ptepractice.vercel.app/ 
 ## Quick start
 
 ## Tech stack
