@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -36,7 +37,28 @@ function YearsStat() {
 export default function Hero() {
   const root = useRef<HTMLDivElement>(null);
   const glow = useRef<HTMLDivElement>(null);
+  const videoContainerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const reduced = useReducedMotion();
+
+  // Pause playback when offscreen using IntersectionObserver
+  useEffect(() => {
+    if (!videoRef.current) return;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            videoRef.current?.play().catch(() => {});
+          } else {
+            videoRef.current?.pause();
+          }
+        });
+      },
+      { threshold: 0 }
+    );
+    obs.observe(videoRef.current);
+    return () => obs.disconnect();
+  }, []);
 
   useEffect(() => {
     if (!root.current) return;
@@ -76,6 +98,46 @@ export default function Hero() {
           scrub: true,
         },
       });
+
+      // Cinematic Video Entrance
+      if (!reduced && videoContainerRef.current) {
+        gsap.set(videoContainerRef.current, {
+          x: "-45vw",
+          scale: 0.96,
+          filter: "brightness(1)",
+          opacity: 0,
+        });
+
+        const tl = gsap.timeline({ delay: 0.2 });
+        tl.to(
+          videoContainerRef.current,
+          {
+            opacity: 1,
+            duration: 2,
+            ease: "power2.out",
+          },
+          0
+        ).to(
+          videoContainerRef.current,
+          {
+            x: "0vw",
+            scale: 1,
+            filter: "brightness(1.08)",
+            duration: 4,
+            ease: "power3.inOut",
+          },
+          0
+        );
+
+        // Continuous floating
+        tl.to(videoContainerRef.current, {
+          y: 8,
+          duration: 4,
+          ease: "sine.inOut",
+          yoyo: true,
+          repeat: -1,
+        });
+      }
     }, root);
     return () => ctx.revert();
   }, [reduced]);
@@ -103,8 +165,34 @@ export default function Hero() {
       ref={root}
       className="noise relative flex min-h-[100svh] items-center overflow-hidden pt-28"
     >
-      {/* === Premium animated gradient mesh background (no photo) === */}
+      {/* Background covering the full section */}
       <div className="absolute inset-0 -z-20 bg-gradient-to-br from-sky-50 via-white to-sky-100" />
+
+      {/* Cinematic Airplane Video */}
+      <div
+        ref={videoContainerRef}
+        className="absolute bottom-[25%] top-[25%] right-0 z-[-15] w-full sm:w-[90vw] md:bottom-0 md:top-0 md:w-[85vw] lg:w-[65vw] pointer-events-none overflow-hidden will-transform"
+        style={{
+          maskImage:
+            "radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 75%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 75%)",
+        }}
+      >
+        <video
+          ref={videoRef}
+          src="/gallery/video1.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          className="h-full w-full object-cover"
+          style={{ transform: "translate3d(0,0,0)" }}
+        />
+        {/* Subtle blue haze overlay to match branding */}
+        <div className="absolute inset-0 bg-azure/10 mix-blend-overlay" />
+      </div>
 
       {/* Animated floating gradient orbs */}
       {!reduced && (

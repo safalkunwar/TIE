@@ -6,7 +6,8 @@ import MagneticButton from "@/components/ui/MagneticButton";
 import Icon from "@/components/ui/Icon";
 import { company } from "@/data/company";
 
-export default function CTA() {
+export default function CTA({ countries }: { countries?: any[] }) {
+  const displayCountries = countries || destinations;
   const [open, setOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -250,7 +251,7 @@ export default function CTA() {
                         <option value="" disabled>
                           Choose a country
                         </option>
-                        {destinations.map((d) => (
+                        {displayCountries.map((d) => (
                           <option key={d.slug} value={d.slug}>
                             {d.flag} {d.name}
                           </option>

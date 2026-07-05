@@ -18,13 +18,15 @@ const GlobeScene = dynamic(() => import("@/three/GlobeScene"), {
   ),
 });
 
-export default function Globe() {
-  const [selected, setSelected] = useState<Destination | null>(null);
+export default function Globe({ countries }: { countries?: any[] }) {
+  const displayCountries = countries || destinations;
+  const [selected, setSelected] = useState<any | null>(null);
   const [inView, setInView] = useState(false);
   const [paused, setPaused] = useState(false);
   const wrapper = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
 
+  // ... rest of effects ...
   useEffect(() => {
     const node = wrapper.current;
     if (!node) return;
@@ -42,7 +44,7 @@ export default function Globe() {
     return () => document.removeEventListener("visibilitychange", onVis);
   }, []);
 
-  const active = selected ?? destinations[0];
+  const active = selected ?? displayCountries[0];
 
   return (
     <section id="globe" className="section relative overflow-hidden">
@@ -84,6 +86,7 @@ export default function Globe() {
               <ReducedGlobe
                 onSelect={setSelected}
                 selected={selected?.slug ?? null}
+                displayCountries={displayCountries}
               />
             )}
             {!reduced && (
@@ -134,12 +137,12 @@ export default function Globe() {
             </div>
 
             <div className="mt-6 flex flex-wrap gap-2">
-              {destinations.map((d) => (
+              {displayCountries.map((d) => (
                 <button
                   key={d.slug}
                   onClick={() => setSelected(d)}
                   className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
-                    (selected ?? destinations[0]).slug === d.slug
+                    (selected ?? displayCountries[0]).slug === d.slug
                       ? "bg-ocean text-white"
                       : "bg-white/70 text-ocean-deep/70 hover:text-ocean-deep"
                   }`}
@@ -199,9 +202,11 @@ function DetailRow({
 function ReducedGlobe({
   selected,
   onSelect,
+  displayCountries,
 }: {
   selected: string | null;
-  onSelect: (d: Destination) => void;
+  onSelect: (d: any) => void;
+  displayCountries: any[];
 }) {
   return (
     <div className="relative grid h-full w-full place-items-center">
@@ -216,20 +221,20 @@ function ReducedGlobe({
         <div className="absolute inset-0 animate-spin-slow rounded-full bg-grid-faint [background-size:28px_28px] opacity-40" />
         <div className="relative z-10 flex flex-col items-center gap-2 text-center">
           <div className="text-5xl">
-            {destinations.find((d) => d.slug === selected)?.flag ?? "🌍"}
+            {displayCountries.find((d) => d.slug === selected)?.flag ?? "🌍"}
           </div>
           <div className="text-xs font-semibold uppercase tracking-[0.25em] text-ocean-deep">
-            {destinations.find((d) => d.slug === selected)?.name ?? "Explore"}
+            {displayCountries.find((d) => d.slug === selected)?.name ?? "Explore"}
           </div>
         </div>
       </div>
       <div className="mt-5 flex flex-wrap justify-center gap-2">
-        {destinations.map((d) => (
+        {displayCountries.map((d) => (
           <button
             key={d.slug}
             onClick={() => onSelect(d)}
             className={`rounded-full px-3 py-1.5 text-xs transition-all ${
-              (selected ?? destinations[0].slug) === d.slug
+              (selected ?? displayCountries[0].slug) === d.slug
                 ? "bg-ocean text-white"
                 : "bg-white/70 text-ocean-deep/70 hover:text-ocean-deep"
             }`}

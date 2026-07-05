@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Stats from "@/components/Stats";
 import About from "@/components/About";
+import Services from "@/components/Services";
 import Globe from "@/components/Globe";
 import Destinations from "@/components/Destinations";
 import DreamJourney from "@/components/DreamJourney";
@@ -10,28 +11,54 @@ import SocialProof from "@/components/SocialProof";
 import Credentials from "@/components/Credentials";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import prisma from "@/lib/db";
 
-export default function Home() {
+export default async function Home() {
+  const dbCountries = await prisma.country.findMany({
+    include: {
+      universities: true,
+      countryScholarships: true,
+      faqs: true,
+      testimonials: true,
+    },
+    orderBy: { createdAt: "asc" },
+  });
+
+  // Map to static destination structure if needed, adding defaults
+  const countries = dbCountries.map((c) => ({
+    slug: c.slug,
+    name: c.name,
+    flag: c.flag,
+    tagline: c.tagline,
+    tuition: c.tuition,
+    intake: c.intake,
+    language: c.language,
+    workWhileStudying: c.workWhileStudying,
+    postStudyWork: c.postStudyWork,
+    topUniversities: c.universities.map((u) => u.name),
+    scholarships: c.scholarships,
+    visaPathway: c.visaPathway,
+    image: c.image,
+    accent: c.accent,
+    lat: c.lat || 0,
+    lng: c.lng || 0,
+  }));
+
   return (
     <>
-      <a
-        href="#globe"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-full focus:bg-ocean focus:px-5 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-white"
-      >
-        Skip to content
-      </a>
-      <Navbar />
+
+      <Navbar countries={countries} />
       <main>
         <Hero />
         <Stats />
         <About />
-        <Globe />
-        <Destinations />
+        <Globe countries={countries} />
+        <Destinations countries={countries} />
         <DreamJourney />
         <Testimonials />
         <SocialProof />
         <Credentials />
-        <CTA />
+        <CTA countries={countries} />
       </main>
       <Footer />
     </>
