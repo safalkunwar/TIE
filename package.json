@@ -5,7 +5,7 @@
   "description": "TIE Nepal — premium Gen-Z study-abroad experience for Target International Education, Pokhara.",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint"
   },
