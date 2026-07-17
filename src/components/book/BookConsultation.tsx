@@ -42,35 +42,12 @@ export default function BookConsultation() {
 
   return (
     <main className="pt-28 sm:pt-32">
-      {/* Hero */}
-      <section className="section pb-10 sm:pb-12">
-        <div className="container-x">
-          <div className="mx-auto flex max-w-3xl flex-col items-center gap-5 text-center">
-            <span className="eyebrow">
-              <span className="h-px w-6 bg-ocean/50" />
-              Free · No obligation
-            </span>
-            <h1 className="font-display text-4xl font-bold leading-[1.05] tracking-tightest text-ocean-deep sm:text-6xl md:text-7xl">
-              Book your <span className="text-gradient-ocean">consultation</span>
-            </h1>
-            <p className="max-w-2xl text-base leading-relaxed text-mist-muted sm:text-lg">
-              Choose how you&rsquo;d like to meet a certified TIE Nepal counselor.
-              Get personalized university picks, a scholarship assessment and a
-              clear visa roadmap — on your schedule.
-            </p>
-          </div>
-
-          <div className="mt-10">
-            <TrustBuilders />
-          </div>
-        </div>
-      </section>
-
-      {/* Consultation methods */}
-      <section ref={methodsRef} className="section pt-4">
+      {/* Consultation methods — shown first so the three options are visible immediately */}
+      <section ref={methodsRef} className="section pb-10 pt-4 sm:pb-12">
         <div className="container-x">
           <SectionHeading
             eyebrow="Choose your method"
+            as="h1"
             title={
               <>
                 Three ways to <span className="text-gradient-ocean">connect</span>
@@ -91,6 +68,30 @@ export default function BookConsultation() {
             {selectedMethod === "online" && <OnlineScheduler methodId="online" />}
             {selectedMethod === "office" && <ContactMethodPanel methodId="office" />}
             {selectedMethod === "phone" && <ContactMethodPanel methodId="phone" />}
+          </div>
+        </div>
+      </section>
+
+      {/* Hero / intro — moved below the options */}
+      <section className="section pt-4">
+        <div className="container-x">
+          <div className="mx-auto flex max-w-3xl flex-col items-center gap-5 text-center">
+            <span className="eyebrow">
+              <span className="h-px w-6 bg-ocean/50" />
+              Free · No obligation
+            </span>
+            <h2 className="font-display text-4xl font-bold leading-[1.05] tracking-tightest text-ocean-deep sm:text-5xl md:text-6xl">
+              Book your <span className="text-gradient-ocean">consultation</span>
+            </h2>
+            <p className="max-w-2xl text-base leading-relaxed text-mist-muted sm:text-lg">
+              Choose how you&rsquo;d like to meet a certified TIE Nepal counselor.
+              Get personalized university picks, a scholarship assessment and a
+              clear visa roadmap — on your schedule.
+            </p>
+          </div>
+
+          <div className="mt-10">
+            <TrustBuilders />
           </div>
         </div>
       </section>

@@ -277,12 +277,30 @@ export default function Hero() {
             data-hero-fade
             className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
           >
-            <MagneticButton href="#book">Book Free Consultation</MagneticButton>
+            <MagneticButton href="/book">Book Free Consultation</MagneticButton>
             <MagneticButton href="#globe" variant="ghost">
               <Icon name="globe" className="h-4 w-4" />
               Explore Destinations
             </MagneticButton>
             <YearsStat />
+          </div>
+
+          {/* Scholarships quick link → consultation flow */}
+          <div data-hero-fade className="mt-4">
+            <a
+              href="/book"
+              className="group inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-4 py-2 text-sm font-semibold text-ocean-deep transition-all duration-200 hover:border-gold/70 hover:bg-gold/20"
+            >
+              <span aria-hidden>🏆</span>
+              Scholarships available
+              <span className="rounded-full bg-emerald-500/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-emerald-700">
+                up to 60%
+              </span>
+              <Icon
+                name="arrow"
+                className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
+              />
+            </a>
           </div>
 
           {/* Floating glass stat chips */}
@@ -312,20 +330,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-
-      {/* Scroll cue */}
-      {!reduced && (
-        <a
-          href="#globe"
-          className="absolute bottom-7 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-mist-muted transition-colors hover:text-ocean-deep md:flex"
-          aria-label="Scroll to explore"
-        >
-          <span className="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
-          <span className="flex h-9 w-5 justify-center rounded-full border border-ocean/30 p-1">
-            <span className="h-2 w-1 animate-float rounded-full bg-ocean/60" />
-          </span>
-        </a>
-      )}
     </section>
   );
 }
