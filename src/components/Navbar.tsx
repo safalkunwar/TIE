@@ -113,7 +113,7 @@ export default function Navbar({ countries }: { countries?: any[] }) {
             >
               {company.contact.mobile}
             </a>
-            <MagneticButton href="#book" className="px-5 py-2.5 text-sm">
+            <MagneticButton href="/book" className="px-5 py-2.5 text-sm">
               Book Consultation
               <Icon name="arrow" className="h-4 w-4" />
             </MagneticButton>
@@ -173,7 +173,7 @@ export default function Navbar({ countries }: { countries?: any[] }) {
             </Link>
           ))}
           <a
-            href="#book"
+            href="/book"
             onClick={() => setOpen(false)}
             className="btn-primary mt-4"
           >
