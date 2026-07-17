@@ -52,9 +52,9 @@ function DestinationCard({ country, index }: { country: any; index: number }) {
           alt={`${d.name} — ${d.tagline?.split(",")[0] || ""}`}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-          className="object-cover opacity-90 transition-all duration-700 group-hover:scale-110"
+          className="object-cover transition-all duration-700 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-ocean-deep/85 via-ocean-deep/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ocean-deep/90 via-ocean-deep/25 to-transparent" />
         <div
           className="absolute inset-x-0 bottom-0 h-1 opacity-80"
           style={{ background: d.accent }}
@@ -69,13 +69,16 @@ function DestinationCard({ country, index }: { country: any; index: number }) {
         <div className="absolute right-4 top-4 glass-strong rounded-full px-3 py-1.5 text-[11px] font-semibold text-ocean-deep shadow-blue-soft">
           {d.tuition?.split(" ")[0]}
         </div>
-      </div>
 
-      <div className="relative -mt-16 p-5">
-        <h3 className="font-display text-2xl font-bold text-white drop-shadow">
+        {/* Country name over the image bottom */}
+        <h3 className="absolute inset-x-0 bottom-4 px-5 font-display text-2xl font-bold text-white drop-shadow-lg">
           {d.name}
         </h3>
-        <p className="mt-1.5 line-clamp-2 text-sm leading-relaxed text-sky-100">
+      </div>
+
+      {/* Card body — dark text on the white card so it's always readable */}
+      <div className="p-5">
+        <p className="text-sm leading-relaxed text-mist-muted">
           {d.tagline}
         </p>
 
@@ -83,14 +86,14 @@ function DestinationCard({ country, index }: { country: any; index: number }) {
           {d.topUniversities?.slice(0, 2).map((u: string) => (
             <span
               key={u}
-              className="rounded-full bg-white/15 px-2.5 py-1 text-[11px] text-white backdrop-blur"
+              className="rounded-full bg-sky-50 px-2.5 py-1 text-[11px] font-medium text-ocean-deep ring-1 ring-ink-line"
             >
               {u}
             </span>
           ))}
         </div>
 
-        <div className="mt-5 flex items-center gap-2 text-sm font-semibold text-white opacity-0 transition-all duration-500 group-hover:opacity-100">
+        <div className="mt-5 flex items-center gap-2 text-sm font-semibold text-ocean transition-all duration-300 group-hover:gap-3">
           Explore pathway
           <Icon
             name="arrow"
