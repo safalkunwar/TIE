@@ -5,24 +5,35 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Sky-blue surface palette
+        sky: {
+          50: "#F0F7FF",
+          100: "#E1EFFE",
+          200: "#CDE3FF",
+          300: "#A8CCFF",
+          400: "#7FB0FF",
+        },
+        // Primary blues
+        ocean: {
+          DEFAULT: "#1E5FB4",
+          deep: "#0B3D82",
+          light: "#2B8AF0",
+        },
+        azure: "#2B8AF0",
         ink: {
-          DEFAULT: "#070B14",
-          soft: "#0E1422",
-          card: "#11182B",
-          line: "rgba(255,255,255,0.08)",
+          DEFAULT: "#0B2A52",
+          soft: "#12305C",
+          line: "rgba(15,23,42,0.10)",
         },
         gold: {
           DEFAULT: "#D4AF37",
           bright: "#F4CF57",
-          soft: "rgba(212,175,55,0.14)",
         },
-        electric: "#5B8CFF",
-        violet: "#9B6BFF",
-        mint: "#4ADE80",
+        // Neutral text colors — dark slate for AA contrast on light bg
         mist: {
-          DEFAULT: "#E8ECF5",
-          muted: "#8A93A6",
-          dim: "#5C6580",
+          DEFAULT: "#0F172A", // headings — near-black slate
+          muted: "#475569", // body — slate-600, AA on white
+          dim: "#64748B", // captions — slate-500
         },
       },
       fontFamily: {
@@ -38,14 +49,18 @@ const config: Config = {
       },
       backgroundImage: {
         "grid-faint":
-          "linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px)",
+          "linear-gradient(to right, rgba(11,61,130,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(11,61,130,0.05) 1px, transparent 1px)",
         "radial-fade":
-          "radial-gradient(circle at 50% 0%, rgba(91,140,255,0.18), transparent 60%)",
+          "radial-gradient(circle at 50% 0%, rgba(43,138,240,0.18), transparent 60%)",
+        "sky-gradient":
+          "linear-gradient(180deg, #EAF4FF 0%, #DCEBFF 40%, #C9E0FF 100%)",
       },
       boxShadow: {
-        glow: "0 0 80px -20px rgba(91,140,255,0.45)",
+        glow: "0 0 80px -20px rgba(43,138,240,0.45)",
         "glow-gold": "0 0 60px -16px rgba(212,175,55,0.5)",
-        card: "0 24px 60px -28px rgba(0,0,0,0.7)",
+        "blue-soft": "0 24px 60px -28px rgba(11,61,130,0.25)",
+        card: "0 18px 50px -24px rgba(11,61,130,0.30)",
+        "card-hover": "0 28px 70px -24px rgba(11,61,130,0.40)",
       },
       keyframes: {
         "fade-up": {

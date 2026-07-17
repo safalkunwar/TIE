@@ -70,7 +70,7 @@ export const destinations: Destination[] = [
     scholarships: "Vanier CGS, university entrance awards, provincial grants.",
     visaPathway: "Study Permit → PGWP → Express Entry / PNP for PR.",
     image:
-      "https://images.pexels.com/photos/2506946/pexels-photo-2506946.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "/gallery/icef-workshop.jpg",
     accent: "#5B8CFF",
   },
   {
@@ -190,7 +190,7 @@ export const destinations: Destination[] = [
     scholarships: "Government of Ireland Scholarships, university merit awards.",
     visaPathway: "Long Stay D Visa → Stamp 1G → Critical Skills Employment Permit.",
     image:
-      "https://images.pexels.com/photos/3373097/pexels-photo-3373097.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "/gallery/govt-approval.jpg",
     accent: "#F4CF57",
   },
   {

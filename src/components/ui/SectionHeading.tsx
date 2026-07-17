@@ -8,7 +8,7 @@ type Props = {
 };
 
 /**
- * Consistent section header: small gold eyebrow, large display title with
+ * Consistent section header: small ocean eyebrow, large display title with
  * optional gradient, supporting copy. Reveals on scroll.
  */
 export default function SectionHeading({
@@ -27,10 +27,10 @@ export default function SectionHeading({
       }`}
     >
       <span className="eyebrow">
-        <span className="h-px w-6 bg-gold/60" />
+        <span className="h-px w-6 bg-ocean/50" />
         {eyebrow}
       </span>
-      <h2 className="font-display text-4xl font-semibold leading-[1.05] tracking-tightest text-mist sm:text-5xl md:text-6xl">
+      <h2 className="font-display text-4xl font-bold leading-[1.05] tracking-tightest text-ocean-deep sm:text-5xl md:text-6xl">
         {title}
       </h2>
       {description && (

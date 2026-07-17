@@ -1,0 +1,85 @@
+// This is your Prisma schema file
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Country {
+  id                String   @id @default(uuid())
+  slug              String   @unique
+  name              String
+  flag              String
+  tagline           String
+  tuition           String
+  intake            String
+  language          String
+  workWhileStudying String
+  postStudyWork     String
+  scholarships      String
+  visaPathway       String
+  image             String
+  accent            String
+  lat               Float?
+  lng               Float?
+  
+  // Relations
+  hero              Hero?
+  universities      University[]
+  countryScholarships CountryScholarship[]
+  faqs              FAQ[]
+  testimonials      Testimonial[]
+
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model Hero {
+  id        String   @id @default(uuid())
+  title     String
+  subtitle  String
+  image     String
+  countryId String   @unique
+  country   Country  @relation(fields: [countryId], references: [id], onDelete: Cascade)
+}
+
+model University {
+  id          String   @id @default(uuid())
+  name        String
+  logo        String?
+  ranking     String?
+  description String?
+  countryId   String
+  country     Country  @relation(fields: [countryId], references: [id], onDelete: Cascade)
+}
+
+model CountryScholarship {
+  id          String   @id @default(uuid())
+  name        String
+  amount      String?
+  deadline    String?
+  description String?
+  countryId   String
+  country     Country  @relation(fields: [countryId], references: [id], onDelete: Cascade)
+}
+
+model FAQ {
+  id        String   @id @default(uuid())
+  question  String
+  answer    String
+  countryId String
+  country   Country  @relation(fields: [countryId], references: [id], onDelete: Cascade)
+}
+
+model Testimonial {
+  id          String   @id @default(uuid())
+  studentName String
+  quote       String
+  avatar      String?
+  countryId   String
+  country     Country  @relation(fields: [countryId], references: [id], onDelete: Cascade)
+}

@@ -16,9 +16,15 @@ export const organizationJsonLd = {
   telephone: "+977-61-585077",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Chippledhunga",
+    streetAddress: "Chipledhunga",
     addressLocality: "Pokhara",
     addressCountry: "NP",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+977-9856032278",
+    contactType: "customer service",
+    availableLanguage: ["English", "Nepali", "Hindi"],
   },
   areaServed: [
     "Japan",
@@ -31,9 +37,9 @@ export const organizationJsonLd = {
     "Canada",
   ],
   sameAs: [
-    "https://www.facebook.com/",
-    "https://www.instagram.com/",
-    "https://www.linkedin.com/",
+    "https://www.facebook.com/targetintl/",
+    "https://www.instagram.com/targetintl/",
+    "https://tienepal.com/",
   ],
 };
 

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Sora } from "next/font/google";
+import { Plus_Jakarta_Sans, Sora } from "next/font/google";
 import "./globals.css";
 import { homeMetadata, organizationJsonLd } from "@/lib/seo";
 import SmoothScroll from "@/components/providers/SmoothScroll";
@@ -11,8 +11,9 @@ export const metadata: Metadata = {
   },
 };
 
-const inter = Inter({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
   display: "swap",
   variable: "--font-inter",
 });
@@ -36,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${sora.variable}`}>
+    <html lang="en" className={`${jakarta.variable} ${sora.variable}`}>
       <body className="min-h-screen bg-ink text-mist antialiased">
         <script
           type="application/ld+json"
