@@ -5,6 +5,8 @@ type Props = {
   title: React.ReactNode;
   description?: React.ReactNode;
   align?: "left" | "center";
+  /** Heading level for the title. Defaults to h2. */
+  as?: "h1" | "h2";
 };
 
 /**
@@ -16,6 +18,7 @@ export default function SectionHeading({
   title,
   description,
   align = "center",
+  as: Heading = "h2",
 }: Props) {
   const ref = useReveal<HTMLDivElement>();
 
@@ -30,9 +33,9 @@ export default function SectionHeading({
         <span className="h-px w-6 bg-ocean/50" />
         {eyebrow}
       </span>
-      <h2 className="font-display text-4xl font-bold leading-[1.05] tracking-tightest text-ocean-deep sm:text-5xl md:text-6xl">
+      <Heading className="font-display text-4xl font-bold leading-[1.05] tracking-tightest text-ocean-deep sm:text-5xl md:text-6xl">
         {title}
-      </h2>
+      </Heading>
       {description && (
         <p className="max-w-2xl text-base leading-relaxed text-mist-muted sm:text-lg">
           {description}

@@ -2,21 +2,27 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import MagneticButton from "@/components/ui/MagneticButton";
 import Icon from "@/components/ui/Icon";
 import { company } from "@/data/company";
+import { destinations as staticDestinations } from "@/data/destinations";
+import DestinationsDropdown from "@/components/DestinationsDropdown";
 
 const links = [
-  { label: "About", href: "#about" },
-  { label: "Destinations", href: "#destinations" },
-  { label: "Your Journey", href: "#journey" },
-  { label: "Success Stories", href: "#stories" },
-  { label: "Why TIE", href: "#why" },
+  { label: "About", href: "/#about" },
+  { label: "Destinations", href: "/#destinations" },
+  { label: "Your Journey", href: "/#journey" },
+  { label: "Success Stories", href: "/#stories" },
+  { label: "Why TIE", href: "/#why" },
 ];
 
-export default function Navbar() {
+export default function Navbar({ countries }: { countries?: any[] }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [megaMenuOpen, setMegaMenuOpen] = useState(false);
+
+  const displayCountries = countries || staticDestinations;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -47,8 +53,8 @@ export default function Navbar() {
           }`}
         >
           {/* Logo */}
-          <a
-            href="#top"
+          <Link
+            href="/"
             className="group flex items-center gap-2.5 pl-1"
             aria-label="TIE Nepal home"
           >
@@ -67,18 +73,34 @@ export default function Navbar() {
                 Target Intl. Education
               </span>
             </span>
-          </a>
+          </Link>
 
           {/* Desktop links */}
-          <ul className="hidden items-center gap-1 lg:flex">
+          <ul className="hidden items-center gap-1 lg:flex relative" onMouseLeave={() => setMegaMenuOpen(false)}>
             {links.map((l) => (
-              <li key={l.href}>
-                <a
+              <li 
+                key={l.href} 
+                className={l.label === "Destinations" ? "relative group" : ""}
+                onMouseEnter={() => {
+                  if (l.label === "Destinations") {
+                    setMegaMenuOpen(true);
+                  } else {
+                    setMegaMenuOpen(false);
+                  }
+                }}
+              >
+                <Link
                   href={l.href}
                   className="rounded-full px-4 py-2 text-sm font-semibold text-ocean-deep/80 transition-all duration-200 hover:bg-ocean hover:text-white"
                 >
                   {l.label}
-                </a>
+                </Link>
+                {l.label === "Destinations" && (
+                  <DestinationsDropdown 
+                    countries={displayCountries} 
+                    isOpen={megaMenuOpen} 
+                  />
+                )}
               </li>
             ))}
           </ul>
@@ -91,7 +113,7 @@ export default function Navbar() {
             >
               {company.contact.mobile}
             </a>
-            <MagneticButton href="#book" className="px-5 py-2.5 text-sm">
+            <MagneticButton href="/book" className="px-5 py-2.5 text-sm">
               Book Consultation
               <Icon name="arrow" className="h-4 w-4" />
             </MagneticButton>
@@ -141,17 +163,17 @@ export default function Navbar() {
           }`}
         >
           {links.map((l) => (
-            <a
+            <Link
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
               className="rounded-2xl px-4 py-3.5 text-lg font-medium text-ocean-deep transition-colors hover:bg-sky-50"
             >
               {l.label}
-            </a>
+            </Link>
           ))}
           <a
-            href="#book"
+            href="/book"
             onClick={() => setOpen(false)}
             className="btn-primary mt-4"
           >

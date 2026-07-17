@@ -1,54 +1,136 @@
-# TIE Nepal to provide  Study-Abroad Experience
+# TIE Nepal — Study Abroad Marketing Website
 
-A cinematic website for **Target International Education (TIE Nepal)**, Pokhara — built from the ground up with Next.js, React Three Fiber, GSAP and Tailwind CSS.
-Here's the link for blue-branch and for another do visit the about section
-https://tie-git-sky-blue-ptepractice.vercel.app/ 
-## Quick start
+A modern, interactive website for Target International Education (TIE Nepal), helping students discover study opportunities worldwide. Built with Next.js and featuring a 3D globe, smooth animations, and a seamless user experience.
 
-## Tech stack
+**🌐 Live Demo:** https://tie-iota.vercel.app/
 
-- **Next.js 14** (App Router) + **React 18** + **TypeScript**
-- **Tailwind CSS** — utility-first styling
-- **React Three Fiber** + **drei** — interactive 3D globe
-- **GSAP** + **ScrollTrigger** — scroll storytelling & animations
-- **Lenis** — smooth scrolling, bridged to GSAP ticker
-- **Google Fonts** via `next/font` (Sora + Inter)
+## Quick Start
+
+```bash
+npm install
+npm run dev
+```
+
+Open **http://localhost:3000** in your browser.
+
+## How to Build & Deploy
+
+```bash
+npm run build
+npm start
+```
+
+## What's Inside
+
+```
+src/
+  app/
+    layout.tsx          Main layout, metadata, fonts
+    page.tsx            Homepage
+    globals.css         Styles and design colors
+    sitemap.ts          Sitemap for search engines
+  components/
+    Navbar.tsx          Top navigation menu
+    Hero.tsx            Welcome section with intro text
+    Globe.tsx           3D interactive map of destinations
+    Stats.tsx           Key numbers (years, students, visa success)
+    DreamJourney.tsx    Step-by-step study abroad process
+    Destinations.tsx    Country cards with universities
+    Testimonials.tsx    Student success stories
+    SocialProof.tsx     Partner logos and credentials
+    CTA.tsx             Booking form and contact options
+    Footer.tsx          Footer with links
+  data/                 Information about destinations and students
+  hooks/                Reusable code for animations
+  lib/                  Helper functions
+  public/               Images and files
+```
+
+## Main Sections
+
+1. **Navigation** — Easy menu at the top
+2. **Welcome Section** — "Your Future Has No Borders"
+3. **Key Numbers** — 13+ years, 5,000+ students, 97% visa success
+4. **Interactive Globe** — Click destinations to explore
+5. **Countries & Universities** — Browse 8 countries and their top universities
+6. **Study Journey** — 7 steps from consultation to success
+7. **Student Stories** — Real testimonials from our students
+8. **Partners** — ECAN, ICEF, British Council verification
+9. **Book a Consultation** — Contact form and WhatsApp link
+10. **Footer** — Contact info and links
+
+## Colors & Design
+
+- Dark blue background with gold and light blue accents
+- Easy to read fonts: Sora for headings, Inter for text
+- Works on phones, tablets, and computers
+
+## Mobile Friendly
+
+- Responsive design that works on all screen sizes
+- Touch-friendly buttons and menus
+- Works smoothly on slower connections
 
 ## Accessibility
 
-- `prefers-reduced-motion` fully respected — Lenis disabled, auto-rotate paused, animations collapse to fades, globe falls back to CSS version
-- WCAG AA contrast ratios
-- Skip-to-content link
-- Keyboard-navigable carousel & globe pins (focusable buttons)
-- ARIA labels on icon controls
-- Semantic HTML (`<main>`, `<section>`, `<article>`, `<nav>`, `<footer>`)
+- Works without animations (for users who prefer it)
+- Keyboard navigation support
+- Good color contrast for easy reading
+- Screen reader compatible
 
-## SEO
+## What You Can Customize
 
-- Per-page metadata, OpenGraph & Twitter cards
-- JSON-LD `EducationalOrganization` structured data
-- `robots.txt` + dynamic sitemap via `sitemap.ts`
-- Semantic heading hierarchy
+### Change Images
+- Update destination photos in `src/data/destinations.ts`
+- Update student photos in `src/data/testimonials.ts`
+- Add a campus image in `Hero.tsx`
+- Add social media preview image: `public/og-image.jpg` (1200×630)
 
-## Customisation
+### Connect the Booking Form
+The booking form currently shows a success message. To save data to a database:
+- Import Firebase config from `js/config.js`
+- Update `CTA.tsx` to send form data to your backend
+- Add error handling and validation
 
-### Swap in real assets
-- Replace Pexels image URLs in `src/data/destinations.ts` and `src/data/testimonials.ts` with TIE's own photography
-- Replace the hero image in `Hero.tsx` with a campus/brand video loop
-- Add `public/og-image.jpg` (1200×630) for social sharing
-- Add real social media URLs in `Footer.tsx`
+### Future Features
+- AI Career Matching Quiz
+- Scholarship Calculator
+- University Database & Search
+- Individual Country Pages
+- Blog & About Pages
 
-### Wire the booking form to Firebase
-- The booking form in `CTA.tsx` currently shows a success toast on submit
-- To connect to the existing Firebase backend, import `firebaseConfig` from the parent repo's `js/config.js` and POST the form data to Firestore/Functions
-- See `../js/config.js` for the Firebase project config (`fir-a7a69`)
+## Technology Stack
 
-### Coming soon (architecture ready)
-- **AI Career Match** — add a quiz component + results view, data in `src/data/`
-- **Scholarship Finder** — interactive calculator, filter by GPA/budget/country
-- **University Explorer** — searchable/filterable database page at `/universities`
-- **Individual destination pages** — route at `/destinations/[slug]`, data already in `destinations.ts`
-- **Blog / About pages** — standard Next.js routes
+- **Next.js 14** — Fast web framework
+- **React 18** — User interface library
+- **TypeScript** — Type-safe JavaScript
+- **Tailwind CSS** — Styling framework
+- **Three.js** — 3D graphics library for globe
+- **GSAP** — Smooth animations
+- **Lenis** — Smooth scrolling
+
+## Common Tasks
+
+### Change text content
+Edit files in `src/data/` and component files in `src/components/`
+
+### Add a new page
+Create a new folder in `src/app/` with a `page.tsx` file
+
+### Update styling
+Edit `src/app/globals.css` or use Tailwind classes in components
+
+### Deploy to production
+- Push to GitHub
+- Connect to Vercel (recommended for Next.js)
+- Or use any hosting that supports Node.js
+
+## Need Help?
+
+- Check Next.js docs: https://nextjs.org
+- Tailwind CSS: https://tailwindcss.com
+- Three.js: https://threejs.org
+- GSAP: https://gsap.com
 
 ## License
 
