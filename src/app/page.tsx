@@ -1,52 +1,65 @@
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import Hero from "@/components/Hero";
+import Stats from "@/components/Stats";
+import About from "@/components/About";
+import Services from "@/components/Services";
+import Globe from "@/components/Globe";
+import Destinations from "@/components/Destinations";
+import DreamJourney from "@/components/DreamJourney";
+import Testimonials from "@/components/Testimonials";
+import SocialProof from "@/components/SocialProof";
+import Credentials from "@/components/Credentials";
 import CTA from "@/components/CTA";
-import SectionHeading from "@/components/ui/SectionHeading";
-import ServiceCard from "@/components/ServiceCard";
-import { servicesData } from "@/data/company";
-import { destinations } from "@/data/destinations";
+import Footer from "@/components/Footer";
+import prisma from "@/lib/db";
 
-export const dynamic = "force-dynamic";
+export default async function Home() {
+  const dbCountries = await prisma.country.findMany({
+    include: {
+      universities: true,
+      countryScholarships: true,
+      faqs: true,
+      testimonials: true,
+    },
+    orderBy: { createdAt: "asc" },
+  });
 
-export const metadata = {
-  title: "Our Services | TIE Nepal",
-  description:
-    "End-to-end study-abroad support — career counselling, test preparation, university applications, visa processing, pre-departure briefing and ongoing support.",
-};
+  // Map to static destination structure if needed, adding defaults
+  const countries = dbCountries.map((c) => ({
+    slug: c.slug,
+    name: c.name,
+    flag: c.flag,
+    tagline: c.tagline,
+    tuition: c.tuition,
+    intake: c.intake,
+    language: c.language,
+    workWhileStudying: c.workWhileStudying,
+    postStudyWork: c.postStudyWork,
+    topUniversities: c.universities.map((u) => u.name),
+    scholarships: c.scholarships,
+    visaPathway: c.visaPathway,
+    image: c.image,
+    accent: c.accent,
+    lat: c.lat || 0,
+    lng: c.lng || 0,
+  }));
 
-export default function ServicesPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#F4F9FF] via-[#E7F1FE] to-[#F4F9FF] text-slatte-900">
-      <Navbar countries={destinations} />
-
-      <section className="relative pt-32 pb-12">
-        <div className="container-x">
-          <SectionHeading
-            eyebrow="What we do"
-            title={
-              <>
-                Every step,{" "}
-                <span className="text-gradient-ocean">handled for you.</span>
-              </>
-            }
-            description="From your first question to graduation day — these are the ways our team carries you forward, end to end."
-            align="left"
-          />
-        </div>
-      </section>
-
-      <section className="pb-24">
-        <div className="container-x">
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {servicesData.map((service) => (
-              <ServiceCard key={service.title} service={service} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <CTA countries={destinations} />
+    <>
+      <Navbar countries={countries} />
+      <main>
+        <Hero />
+        <Stats />
+        <About />
+        <Globe countries={countries} />
+        <Destinations countries={countries} />
+        <DreamJourney />
+        <Testimonials />
+        <SocialProof />
+        <Credentials />
+        <CTA countries={countries} />
+      </main>
       <Footer />
-    </div>
+    </>
   );
 }
