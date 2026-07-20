@@ -1,3 +1,5 @@
+"use client";
+
 import { useReveal } from "@/hooks/useReveal";
 
 type Props = {

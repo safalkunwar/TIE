@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
@@ -12,6 +12,8 @@ import DestinationsDropdown from "@/components/DestinationsDropdown";
 const links = [
   { label: "About", href: "/#about" },
   { label: "Destinations", href: "/#destinations" },
+  { label: "Test Prep", href: "/test-prep" },
+  { label: "Services", href: "/services" },
   { label: "Your Journey", href: "/#journey" },
   { label: "Success Stories", href: "/#stories" },
   { label: "Why TIE", href: "/#why" },
@@ -46,7 +48,7 @@ export default function Navbar({ countries }: { countries?: any[] }) {
     >
       <nav className="container-x">
         <div
-          className={`flex items-center justify-between rounded-full px-4 py-2.5 transition-all duration-300 ${
+          className={`flex items-center justify-between rounded-full px-4 py-2 transition-all duration-300 ${
             scrolled
               ? "glass-strong shadow-blue-soft"
               : "border border-transparent bg-transparent"
@@ -76,10 +78,13 @@ export default function Navbar({ countries }: { countries?: any[] }) {
           </Link>
 
           {/* Desktop links */}
-          <ul className="hidden items-center gap-1 lg:flex relative" onMouseLeave={() => setMegaMenuOpen(false)}>
+          <ul
+            className="hidden items-center gap-1 lg:flex relative"
+            onMouseLeave={() => setMegaMenuOpen(false)}
+          >
             {links.map((l) => (
-              <li 
-                key={l.href} 
+              <li
+                key={l.href}
                 className={l.label === "Destinations" ? "relative group" : ""}
                 onMouseEnter={() => {
                   if (l.label === "Destinations") {
@@ -91,14 +96,14 @@ export default function Navbar({ countries }: { countries?: any[] }) {
               >
                 <Link
                   href={l.href}
-                  className="rounded-full px-4 py-2 text-sm font-semibold text-ocean-deep/80 transition-all duration-200 hover:bg-ocean hover:text-white"
+                  className="whitespace-nowrap rounded-full px-3.5 py-2 text-[13px] font-semibold text-ocean-deep/80 transition-all duration-200 hover:bg-ocean hover:text-white"
                 >
                   {l.label}
                 </Link>
                 {l.label === "Destinations" && (
-                  <DestinationsDropdown 
-                    countries={displayCountries} 
-                    isOpen={megaMenuOpen} 
+                  <DestinationsDropdown
+                    countries={displayCountries}
+                    isOpen={megaMenuOpen}
                   />
                 )}
               </li>
@@ -109,7 +114,7 @@ export default function Navbar({ countries }: { countries?: any[] }) {
           <div className="hidden items-center gap-2 lg:flex">
             <a
               href={`tel:${company.contact.telMobile}`}
-              className="rounded-full px-3 py-2 text-sm font-semibold text-ocean-deep/80 transition-all duration-200 hover:bg-ocean hover:text-white"
+              className="whitespace-nowrap rounded-full px-3 py-2 text-[13px] font-semibold text-ocean-deep/80 transition-all duration-200 hover:bg-ocean hover:text-white"
             >
               {company.contact.mobile}
             </a>
