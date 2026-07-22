@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
@@ -48,11 +48,17 @@ export default function Navbar({ countries }: { countries?: any[] }) {
     >
       <nav className="container-x">
         <div
-          className={`flex items-center justify-between rounded-full px-4 py-2 transition-all duration-300 ${
-            scrolled
-              ? "glass-strong shadow-blue-soft"
-              : "border border-transparent bg-transparent"
-          }`}
+          className={`
+            flex items-center justify-between 
+            rounded-full 
+            px-4 py-2 
+            transition-all duration-300 
+            mx-auto max-w-[calc(100%-2rem)] sm:max-w-full
+            bg-white/82 backdrop-blur-xl 
+            border border-white/85 
+            shadow-blue-soft
+            ${scrolled ? "" : "lg:!bg-transparent lg:!shadow-none lg:!border-transparent lg:!backdrop-blur-none"}
+          `}
         >
           {/* Logo */}
           <Link
@@ -65,13 +71,13 @@ export default function Navbar({ countries }: { countries?: any[] }) {
               alt="Target International Education logo"
               width={42}
               height={42}
-              className="h-10 w-10 rounded-xl object-contain shadow-blue-soft transition-transform group-hover:scale-105"
+              className="h-8 w-8 sm:h-10 sm:w-10 rounded-xl object-contain shadow-blue-soft transition-transform group-hover:scale-105"
             />
             <span className="flex flex-col leading-none">
-              <span className="font-display text-sm font-bold tracking-wide text-ocean-deep">
+              <span className="font-display text-[11px] font-bold tracking-wide text-ocean-deep sm:text-sm">
                 TIE Nepal
               </span>
-              <span className="text-[10px] uppercase tracking-[0.22em] text-mist-muted">
+              <span className="text-[9px] uppercase tracking-[0.22em] text-mist-muted sm:text-[10px]">
                 Target Intl. Education
               </span>
             </span>
