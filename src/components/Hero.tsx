@@ -163,7 +163,7 @@ export default function Hero() {
     <section
       id="top"
       ref={root}
-      className="noise relative flex min-h-[100svh] items-center overflow-hidden pt-28"
+      className="noise relative flex min-h-[100svh] items-center overflow-hidden pt-16 sm:pt-24 lg:pt-28"
     >
       {/* Background covering the full section */}
       <div className="absolute inset-0 -z-20 bg-gradient-to-br from-sky-50 via-white to-sky-100" />
@@ -285,6 +285,20 @@ export default function Hero() {
             <YearsStat />
           </div>
 
+          {/* Mobile trust badges */}
+          <div className="mt-4 grid grid-cols-2 gap-2 lg:hidden">
+            {[
+              { label: "97% Visa Success" },
+              { label: "350+ Partner Universities" },
+              { label: "5,000+ Students Placed" },
+              { label: "13+ Years" },
+            ].map((badge) => (
+              <div key={badge.label} className="glass-strong rounded-full px-3 py-2.5 text-center shadow-sm">
+                <span className="text-xs font-bold text-ocean-deep">{badge.label}</span>
+              </div>
+            ))}
+          </div>
+
           {/* Scholarships quick link → consultation flow */}
           <div data-hero-fade className="mt-4">
             <a
@@ -307,7 +321,7 @@ export default function Hero() {
           <div
             data-hero-fade
             data-hero-parallax
-            className="mt-16 flex flex-wrap gap-3"
+            className="hidden lg:flex mt-16 flex-wrap gap-3"
           >
             {[
               { k: "97%", v: "Visa success rate" },
