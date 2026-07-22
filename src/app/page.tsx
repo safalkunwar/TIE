@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Stats from "@/components/Stats";
+import MobileStats from "@/components/MobileStats";
 import About from "@/components/About";
 import Services from "@/components/Services";
 import Globe from "@/components/Globe";
@@ -12,6 +13,7 @@ import Credentials from "@/components/Credentials";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import MobileBottomNav from "@/components/MobileBottomNav";
+import MobileBottomCTA from "@/components/MobileBottomCTA";
 import prisma from "@/lib/db";
 
 export default async function Home() {
@@ -50,6 +52,7 @@ export default async function Home() {
       <Navbar countries={countries} />
       <main className="pb-20 lg:pb-0">
         <Hero />
+        <MobileStats />
         <Stats />
         <About />
         <Globe countries={countries} />
@@ -62,6 +65,7 @@ export default async function Home() {
       </main>
       <Footer />
       <MobileBottomNav />
+      <MobileBottomCTA />
     </>
   );
 }

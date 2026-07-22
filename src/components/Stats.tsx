@@ -47,7 +47,7 @@ export default function Stats() {
   return (
     <section className="relative">
       <div className="container-x">
-        <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+        <div className="hidden grid-cols-2 gap-4 sm:grid lg:grid-cols-4">
           {stats.map((s) => (
             <StatCard key={s.label} {...s} />
           ))}

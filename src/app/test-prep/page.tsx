@@ -4,6 +4,7 @@ import CTA from "@/components/CTA";
 import SectionHeading from "@/components/ui/SectionHeading";
 import TestPrepCard from "@/components/TestPrepCard";
 import MobileBottomNav from "@/components/MobileBottomNav";
+import MobileBottomCTA from "@/components/MobileBottomCTA";
 import { testPrepPrograms } from "@/data/testPrep";
 import { destinations } from "@/data/destinations";
 
@@ -33,6 +34,18 @@ export default function TestPrepPage() {
             description="Structured, counsellor-led programs for every major admissions and language test — with weekly mock exams and individual feedback."
             align="left"
           />
+
+          {/* Mobile: horizontal chip row for quick test reference */}
+          <div className="mt-6 flex gap-2 overflow-x-auto no-scrollbar lg:hidden">
+            {["IELTS", "PTE", "TOEFL", "SAT", "GRE", "GMAT"].map((name) => (
+              <span
+                key={name}
+                className="whitespace-nowrap rounded-full bg-ocean/10 px-4 py-2 text-xs font-bold text-ocean-deep"
+              >
+                {name}
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -49,6 +62,7 @@ export default function TestPrepPage() {
       <CTA countries={destinations} />
       <Footer />
       <MobileBottomNav />
+      <MobileBottomCTA />
     </div>
   );
 }

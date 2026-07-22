@@ -5,8 +5,10 @@ import Image from "next/image";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import MobileBottomNav from "@/components/MobileBottomNav";
+import MobileBottomCTA from "@/components/MobileBottomCTA";
 import Navbar from "@/components/Navbar";
 import DestinationSection from "@/components/DestinationSection";
+import ExpandableText from "@/components/ExpandableText";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { getDestinationDetail } from "@/data/destinationDetail";
 
@@ -166,11 +168,11 @@ export default async function CountryDetailPage({
 
                <div className="mt-12 grid gap-6 lg:grid-cols-3">
                 <DestinationSection title="Overview" icon="doc">
-                  <p className="text-slate-600 leading-relaxed">{detail.overview}</p>
+                  <ExpandableText text={detail.overview} maxLines={3} />
                 </DestinationSection>
 
                 <DestinationSection title="Why study here?" icon="star">
-                  <p className="text-slate-600 leading-relaxed">{detail.whyStudy}</p>
+                  <ExpandableText text={detail.whyStudy} maxLines={3} />
                 </DestinationSection>
 
                 <DestinationSection title="Education system" icon="cap">
@@ -315,6 +317,7 @@ export default async function CountryDetailPage({
 
       <Footer />
       <MobileBottomNav />
+      <MobileBottomCTA />
     </div>
     </div>
   );

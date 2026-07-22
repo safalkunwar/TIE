@@ -5,6 +5,7 @@ import Image from "next/image";
 import { testimonials } from "@/data/testimonials";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Icon from "@/components/ui/Icon";
+import ExpandableText from "@/components/ExpandableText";
 
 export default function Testimonials() {
   const track = useRef<HTMLDivElement>(null);
@@ -81,11 +82,11 @@ export default function Testimonials() {
               </div>
 
               <div className="-mt-10 relative p-6">
-                <p className="text-sm leading-relaxed text-ocean-deep">
-                  <span className="text-ocean">&ldquo;</span>
-                  {t.quote}
-                  <span className="text-ocean">&rdquo;</span>
-                </p>
+                <ExpandableText
+                  text={t.quote}
+                  maxLines={3}
+                  className="text-sm leading-relaxed text-ocean-deep [&_p]:inline"
+                />
 
                 <div className="mt-5 border-t border-ink-line pt-4">
                   <div className="flex items-center justify-between gap-3">

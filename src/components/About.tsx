@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useReveal } from "@/hooks/useReveal";
 import Icon from "@/components/ui/Icon";
+import ExpandableText from "@/components/ExpandableText";
 import { company } from "@/data/company";
 
 const pillars = [
@@ -92,21 +93,16 @@ export default function About() {
               Pokhara's most trusted{" "}
               <span className="text-gradient-ocean">passport to the world.</span>
             </h2>
-            <p className="max-w-xl text-base leading-relaxed text-mist-muted sm:text-lg">
-              Founded on {company.founded} in {company.location}, Target
-              International Education has spent over a decade turning Nepali
-              ambition into international achievement. We are approved by the
-              Ministry of Education, accredited by ICEF, and a proud member of
-              ECAN — credentials that mean your application is in qualified,
-              ethical hands.
-            </p>
-            <p className="max-w-xl text-base leading-relaxed text-mist-muted sm:text-lg">
-              <span className="font-semibold text-ocean-deep">
-                &ldquo;{company.blurb}&rdquo;
-              </span>{" "}
-              That is not a slogan — it is how every counsellor here treats every
-              student who walks through our doors.
-            </p>
+            <ExpandableText
+              text={`Founded on ${company.founded} in ${company.location}, Target International Education has spent over a decade turning Nepali ambition into international achievement. We are approved by the Ministry of Education, accredited by ICEF, and a proud member of ECAN — credentials that mean your application is in qualified, ethical hands.`}
+              maxLines={3}
+              className="max-w-xl"
+            />
+            <ExpandableText
+              text={`"${company.blurb}" That is not a slogan — it is how every counsellor here treats every student who walks through our doors.`}
+              maxLines={3}
+              className="max-w-xl"
+            />
 
             {/* Pillars grid */}
             <div className="mt-2 grid w-full gap-3 sm:grid-cols-2">

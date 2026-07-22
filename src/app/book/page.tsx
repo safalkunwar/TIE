@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookConsultation from "@/components/book/BookConsultation";
 import MobileBottomNav from "@/components/MobileBottomNav";
+import MobileBottomCTA from "@/components/MobileBottomCTA";
 
 export const metadata: Metadata = {
   title: "Book a Consultation | TIE Nepal",
@@ -45,6 +46,7 @@ export default async function BookPage() {
       </main>
       <Footer />
       <MobileBottomNav />
+      <MobileBottomCTA />
     </>
   );
 }

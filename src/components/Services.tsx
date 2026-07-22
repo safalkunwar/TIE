@@ -2,6 +2,7 @@
 
 import SectionHeading from "@/components/ui/SectionHeading";
 import Icon from "@/components/ui/Icon";
+import ExpandableText from "@/components/ExpandableText";
 import { company } from "@/data/company";
 import { useReveal } from "@/hooks/useReveal";
 
@@ -39,8 +40,8 @@ export default function Services() {
               <h3 className="font-display text-lg font-bold text-mist">
                 {s.title}
               </h3>
-              <p className="text-sm leading-relaxed text-mist-muted">
-                {s.desc}
+              <p className="mt-2">
+                <ExpandableText text={s.desc} maxLines={2} />
               </p>
             </div>
           ))}
