@@ -11,7 +11,10 @@ type IconName =
   | "check"
   | "star"
   | "globe"
-  | "whatsapp";
+  | "whatsapp"
+  | "home"
+  | "grid"
+  | "user";
 
 type Props = {
   name: IconName;
@@ -113,6 +116,29 @@ export default function Icon({ name, className = "h-6 w-6" }: Props) {
       return (
         <svg {...common} fill="currentColor" stroke="none">
           <path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 0 1 6.6 12.5l.6 2.1-2.2-.6A8 8 0 1 1 12 4zm-3.2 4.2c-.2 0-.5 0-.7.4-.3.4-1 1-1 2.4s1 2.8 1.2 3c.2.2 2 3.1 5 4.3 2.4 1 2.9.8 3.4.7.5 0 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.1-.7.1l-.7 1c-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.8-.7-1.4-1.6-1.6-1.9-.1-.3 0-.4.1-.5l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.1c-.2-.5-.4-.5-.6-.5z" />
+        </svg>
+      );
+    case "home":
+      return (
+        <svg {...common}>
+          <path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-9.5z" />
+          <path d="M9 21V13h6v8" />
+        </svg>
+      );
+    case "grid":
+      return (
+        <svg {...common}>
+          <rect x="3" y="3" width="7" height="7" rx="1" />
+          <rect x="14" y="3" width="7" height="7" rx="1" />
+          <rect x="3" y="14" width="7" height="7" rx="1" />
+          <rect x="14" y="14" width="7" height="7" rx="1" />
+        </svg>
+      );
+    case "user":
+      return (
+        <svg {...common}>
+          <circle cx="12" cy="8" r="4" />
+          <path d="M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8" />
         </svg>
       );
     default:

@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import CTA from "@/components/CTA";
 import SectionHeading from "@/components/ui/SectionHeading";
 import TestPrepCard from "@/components/TestPrepCard";
+import MobileBottomNav from "@/components/MobileBottomNav";
 import { testPrepPrograms } from "@/data/testPrep";
 import { destinations } from "@/data/destinations";
 
@@ -35,7 +36,7 @@ export default function TestPrepPage() {
         </div>
       </section>
 
-      <section className="pb-24">
+      <section className="pb-24 lg:pb-24">
         <div className="container-x">
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {testPrepPrograms.map((program) => (
@@ -47,6 +48,7 @@ export default function TestPrepPage() {
 
       <CTA countries={destinations} />
       <Footer />
+      <MobileBottomNav />
     </div>
   );
 }

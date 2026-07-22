@@ -1,9 +1,10 @@
-﻿import prisma from "@/lib/db";
+import prisma from "@/lib/db";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import MobileBottomNav from "@/components/MobileBottomNav";
 import Navbar from "@/components/Navbar";
 import DestinationSection from "@/components/DestinationSection";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -61,8 +62,9 @@ export default async function CountryDetailPage({
         </div>
       </section>
 
-      {/* Fast Facts Grid */}
-      <section className="py-12 bg-white border-y border-slate-100">
+      <div className="pb-20 lg:pb-0">
+        {/* Fast Facts Grid */}
+        <section className="py-12 bg-white border-y border-slate-100">
         <div className="container-x grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <div className="p-6 rounded-2xl bg-slate-50 border border-slate-100">
             <span className="text-xs uppercase font-bold tracking-wider text-slate-400">Average Tuition</span>
@@ -312,6 +314,8 @@ export default async function CountryDetailPage({
       <CTA countries={allCountries} />
 
       <Footer />
+      <MobileBottomNav />
+    </div>
     </div>
   );
 }

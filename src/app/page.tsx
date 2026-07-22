@@ -11,6 +11,7 @@ import SocialProof from "@/components/SocialProof";
 import Credentials from "@/components/Credentials";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import MobileBottomNav from "@/components/MobileBottomNav";
 import prisma from "@/lib/db";
 
 export default async function Home() {
@@ -47,7 +48,7 @@ export default async function Home() {
   return (
     <>
       <Navbar countries={countries} />
-      <main>
+      <main className="pb-20 lg:pb-0">
         <Hero />
         <Stats />
         <About />
@@ -60,6 +61,7 @@ export default async function Home() {
         <CTA countries={countries} />
       </main>
       <Footer />
+      <MobileBottomNav />
     </>
   );
 }

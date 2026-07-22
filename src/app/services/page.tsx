@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import CTA from "@/components/CTA";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
+import MobileBottomNav from "@/components/MobileBottomNav";
 import { servicesData } from "@/data/company";
 import { destinations } from "@/data/destinations";
 
@@ -35,7 +36,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="pb-24">
+      <section className="pb-24 lg:pb-24">
         <div className="container-x">
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {servicesData.map((service) => (
@@ -47,6 +48,7 @@ export default function ServicesPage() {
 
       <CTA countries={destinations} />
       <Footer />
+      <MobileBottomNav />
     </div>
   );
 }

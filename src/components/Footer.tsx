@@ -26,7 +26,7 @@ const nav = {
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-ink-line bg-white/60 pt-20 backdrop-blur">
+    <footer className="hidden lg:block relative overflow-hidden border-t border-ink-line bg-white/60 pt-20 backdrop-blur">
       <div className="container-x">
         <div className="grid gap-12 lg:grid-cols-[1.6fr_1fr_1fr_1fr]">
           {/* Brand */}

@@ -3,6 +3,7 @@ import prisma from "@/lib/db";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookConsultation from "@/components/book/BookConsultation";
+import MobileBottomNav from "@/components/MobileBottomNav";
 
 export const metadata: Metadata = {
   title: "Book a Consultation | TIE Nepal",
@@ -39,8 +40,11 @@ export default async function BookPage() {
   return (
     <>
       <Navbar countries={countries} />
-      <BookConsultation />
+      <main className="pb-20 lg:pb-0">
+        <BookConsultation />
+      </main>
       <Footer />
+      <MobileBottomNav />
     </>
   );
 }
