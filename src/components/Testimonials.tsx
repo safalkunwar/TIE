@@ -107,7 +107,7 @@ export default function Testimonials() {
             </article>
           ))}
           {/* trailing spacer so last card snaps cleanly */}
-          <div className="w-2 shrink-0 sm:w-12" aria-hidden />
+          <div className="w-8 shrink-0 sm:w-12" aria-hidden />
         </div>
       </div>
     </section>
