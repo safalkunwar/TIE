@@ -17,7 +17,7 @@ export const metadata = {
 
 export default function TestPrepPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#F4F9FF] via-[#E7F1FE] to-[#F4F9FF] text-slate-900">
+    <div className="min-h-screen bg-gradient-to-b from-[#F4F9FF] via-[#E7F1FE] to-[#F4F9FF] text-slate-900 pb-20 lg:pb-0">
       <Navbar countries={destinations} />
 
       <section className="relative pt-32 pb-12">

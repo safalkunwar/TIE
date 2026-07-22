@@ -24,7 +24,25 @@ export default function Destinations({ countries }: { countries?: any[] }) {
           description="Each destination has its own character, cost and visa pathway. Hover to explore — then book a free consultation to get the full picture for your profile."
         />
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Mobile: horizontal snap scrolling cards */}
+        <div className="lg:hidden overflow-x-auto snap-x snap-mandatory no-scrollbar mt-14">
+          <div className="flex gap-4 px-5 pb-4">
+            {displayCountries.map((d) => (
+              <Link
+                key={d.slug}
+                href={`/country/${d.slug}`}
+                className="snap-start w-[260px] shrink-0 rounded-2xl bg-white p-5 shadow-sm border border-ink-line"
+              >
+                <span className="text-3xl leading-none">{d.flag}</span>
+                <h3 className="font-display text-lg font-bold text-mist mt-2">{d.name}</h3>
+                <p className="text-xs text-mist-muted mt-1.5 leading-relaxed line-clamp-2">{d.tagline}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop: 4-column grid (unchanged) */}
+        <div className="hidden lg:grid mt-14 gap-5 lg:grid-cols-4">
           {displayCountries.map((d, i) => (
             <DestinationCard key={d.slug} country={d} index={i} />
           ))}

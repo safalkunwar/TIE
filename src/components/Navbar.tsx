@@ -130,10 +130,21 @@ export default function Navbar({ countries }: { countries?: any[] }) {
             </MagneticButton>
           </div>
 
+          {/* Mobile phone button */}
+          <a
+            href={`tel:${company.contact.telMobile}`}
+            className="grid h-11 w-11 place-items-center rounded-full glass-strong lg:hidden"
+            aria-label="Call TIE Nepal"
+          >
+            <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a12 12 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+          </a>
+
           {/* Mobile toggle */}
           <button
             onClick={() => setOpen((v) => !v)}
-            className="grid h-10 w-10 place-items-center rounded-full glass-strong lg:hidden"
+            className="grid h-11 w-11 place-items-center rounded-full glass-strong lg:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
           >
@@ -169,7 +180,7 @@ export default function Navbar({ countries }: { countries?: any[] }) {
           onClick={() => setOpen(false)}
         />
         <div
-          className={`absolute right-0 top-0 flex h-full w-[82%] max-w-sm flex-col gap-2 bg-white p-7 pt-24 shadow-card transition-transform duration-300 ${
+          className={`absolute inset-0 flex flex-col gap-3 bg-white/95 backdrop-blur-lg p-6 pt-24 transition-transform duration-300 lg:hidden ${
             open ? "translate-x-0" : "translate-x-full"
           }`}
         >
@@ -178,7 +189,7 @@ export default function Navbar({ countries }: { countries?: any[] }) {
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="rounded-2xl px-4 py-3.5 text-lg font-medium text-ocean-deep transition-colors hover:bg-sky-50"
+              className="rounded-2xl px-4 py-4 text-lg font-medium text-ocean-deep transition-colors hover:bg-sky-50 min-h-[44px] flex items-center"
             >
               {l.label}
             </Link>
