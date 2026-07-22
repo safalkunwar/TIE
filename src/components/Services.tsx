@@ -21,11 +21,11 @@ export default function Services() {
           description="From your first question to your graduation day — these are the six ways our team carries you forward."
         />
 
-        <div ref={ref} className="reveal mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div ref={ref} className="reveal mt-14 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">
           {company.services.map((s) => (
             <div
               key={s.title}
-              className="card group relative flex flex-col gap-3 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover"
+              className="card group relative flex flex-col gap-2 sm:gap-3 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover p-4 sm:p-5 lg:p-7"
             >
               <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-azure/10 opacity-0 blur-2xl transition-opacity group-hover:opacity-100" />
               <div className="flex items-center gap-3">
