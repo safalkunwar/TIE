@@ -40,9 +40,7 @@ export default function Services() {
               <h3 className="font-display text-lg font-bold text-mist">
                 {s.title}
               </h3>
-              <p className="mt-2">
-                <ExpandableText text={s.desc} maxLines={2} />
-              </p>
+              <ExpandableText text={s.desc} maxLines={2} />
             </div>
           ))}
         </div>
