@@ -1,9 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
-import Marquee from "@/components/ui/Marquee";
 import Icon from "@/components/ui/Icon";
 import { company } from "@/data/company";
+
+const affiliationLogos = [
+  { src: "/gallery/membership.jpg", alt: "ECAN, ICEF, British Council, IDP, PTE, Duolingo, OET, Government of Nepal" },
+];
 
 const credentials = [
   {
@@ -65,24 +69,22 @@ export default function SocialProof() {
         </div>
 
         {/* Partner ribbon */}
-        <div className="mt-14 rounded-4xl border border-ink-line bg-white/60 py-8 shadow-blue-soft backdrop-blur">
+<div className="mt-14 rounded-4xl border border-ink-line bg-white/60 py-8 shadow-blue-soft backdrop-blur">
           <p className="mb-6 text-center text-xs uppercase tracking-[0.25em] text-mist-muted">
             Official partners & affiliations
           </p>
-          <Marquee
-            items={[
-              "ECAN",
-              "ICEF Trusted Agency",
-              "British Council",
-              "IDP IELTS",
-              "PTE Academic",
-              "Govt. of Nepal",
-              "Duolingo English Test",
-              "OET",
-            ]}
-          />
+          <div className="overflow-x-auto py-2">
+            <div className="flex w-max gap-8 px-4">
+              <Image
+                src="/gallery/membership.jpg"
+                alt="ECAN, ICEF, British Council, IDP, PTE, Duolingo, OET, Government of Nepal"
+                width={1600}
+                height={200}
+                className="h-16 w-auto object-contain"
+              />
+            </div>
+          </div>
         </div>
-
         {/* Follow us strip */}
         <div className="mt-8 flex flex-col items-center justify-between gap-4 rounded-4xl border border-ink-line bg-gradient-to-br from-sky-100/70 to-sky-200/50 px-7 py-6 sm:flex-row">
           <div className="text-center sm:text-left">

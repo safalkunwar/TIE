@@ -26,7 +26,9 @@ model Country {
   accent            String
   lat               Float?
   lng               Float?
-  
+  published         Boolean  @default(true)
+  sortOrder         Int      @default(0)
+
   // Relations
   hero              Hero?
   universities      University[]
@@ -55,6 +57,8 @@ model University {
   description String?
   countryId   String
   country     Country  @relation(fields: [countryId], references: [id], onDelete: Cascade)
+  published   Boolean  @default(true)
+  sortOrder   Int      @default(0)
 }
 
 model CountryScholarship {
@@ -65,6 +69,8 @@ model CountryScholarship {
   description String?
   countryId   String
   country     Country  @relation(fields: [countryId], references: [id], onDelete: Cascade)
+  published   Boolean  @default(true)
+  sortOrder   Int      @default(0)
 }
 
 model FAQ {
@@ -73,6 +79,8 @@ model FAQ {
   answer    String
   countryId String
   country   Country  @relation(fields: [countryId], references: [id], onDelete: Cascade)
+  published Boolean  @default(true)
+  sortOrder Int      @default(0)
 }
 
 model Testimonial {
@@ -80,6 +88,10 @@ model Testimonial {
   studentName String
   quote       String
   avatar      String?
+  visaGranted Boolean  @default(false)
+  sourceUrl   String?
   countryId   String
   country     Country  @relation(fields: [countryId], references: [id], onDelete: Cascade)
+  published   Boolean  @default(true)
+  sortOrder   Int      @default(0)
 }

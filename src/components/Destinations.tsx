@@ -6,6 +6,8 @@ import { destinations as staticDestinations } from "@/data/destinations";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Icon from "@/components/ui/Icon";
 import { useReveal } from "@/hooks/useReveal";
+import CountryFlag from "@/components/ui/CountryFlag";
+import { getDestinationImage } from "@/lib/destinationImage";
 
 export default function Destinations({ countries }: { countries?: any[] }) {
   const displayCountries = countries || staticDestinations;
@@ -33,7 +35,7 @@ export default function Destinations({ countries }: { countries?: any[] }) {
                 href={`/country/${d.slug}`}
                 className="snap-start w-[260px] shrink-0 rounded-2xl bg-white p-5 shadow-sm border border-ink-line"
               >
-                <span className="text-3xl leading-none">{d.flag}</span>
+                <CountryFlag slug={d.slug} name={d.name} flag={d.flag} />
                 <h3 className="font-display text-lg font-bold text-mist mt-2">{d.name}</h3>
                 <p className="text-xs text-mist-muted mt-1.5 leading-relaxed line-clamp-2">{d.tagline}</p>
               </Link>
@@ -66,7 +68,7 @@ function DestinationCard({ country, index }: { country: any; index: number }) {
     >
       <div className="relative aspect-[4/5] overflow-hidden">
         <Image
-          src={d.image}
+          src={getDestinationImage(d.slug, d.image || "")}
           alt={`${d.name} — ${d.tagline?.split(",")[0] || ""}`}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
@@ -81,7 +83,7 @@ function DestinationCard({ country, index }: { country: any; index: number }) {
         {/* Flag + tuition chip */}
         <div className="absolute left-4 top-4 flex items-center gap-2">
           <span className="glass-strong grid h-9 w-9 place-items-center rounded-xl text-lg shadow-blue-soft">
-            {d.flag}
+            <CountryFlag slug={d.slug} name={d.name} flag={d.flag} className="!h-5 !w-6" />
           </span>
         </div>
         <div className="absolute right-4 top-4 glass-strong rounded-full px-3 py-1.5 text-[11px] font-semibold text-ocean-deep shadow-blue-soft">

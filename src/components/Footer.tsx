@@ -1,26 +1,28 @@
 import { destinations } from "@/data/destinations";
 import { company } from "@/data/company";
+import Link from "next/link";
+import CountryFlag from "@/components/ui/CountryFlag";
 import Icon from "@/components/ui/Icon";
 
 const nav = {
   Company: [
-    { label: "About TIE", href: "#about" },
-    { label: "Our Journey", href: "#journey" },
-    { label: "Success Stories", href: "#stories" },
-    { label: "Credentials", href: "#credentials" },
-    { label: "Book Consultation", href: "#book" },
+    { label: "About TIE", href: "/#about" },
+    { label: "Our Journey", href: "/#journey" },
+    { label: "Success Stories", href: "/#stories" },
+    { label: "Credentials", href: "/#why" },
+    { label: "Book Consultation", href: "/book" },
   ],
   Services: [
-    { label: "Career Counselling", href: "#book" },
-    { label: "University Placement", href: "#destinations" },
-    { label: "Visa Support", href: "#journey" },
-    { label: "Test Prep (IELTS/PTE)", href: "#book" },
+    { label: "Career Counselling", href: "/book" },
+    { label: "University Placement", href: "/#destinations" },
+    { label: "Visa Support", href: "/#journey" },
+    { label: "Test Prep (IELTS/PTE)", href: "/test-prep" },
   ],
   Reach: [
     { label: company.contact.landlinePrimary, href: `tel:${company.contact.telPrimary}` },
     { label: company.contact.mobile, href: `tel:${company.contact.telMobile}` },
     { label: company.contact.email, href: `mailto:${company.contact.email}` },
-    { label: company.location, href: "#book" },
+    { label: company.location, href: "/book" },
   ],
 };
 
@@ -31,7 +33,7 @@ export default function Footer() {
         <div className="grid gap-12 lg:grid-cols-[1.6fr_1fr_1fr_1fr]">
           {/* Brand */}
           <div>
-            <a href="#top" className="flex items-center gap-2.5">
+            <Link href="/" className="flex items-center gap-2.5">
               <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-azure to-ocean text-white">
                 <span className="font-display text-lg font-extrabold">T</span>
               </span>
@@ -43,7 +45,7 @@ export default function Footer() {
                   Target Intl. Education
                 </span>
               </span>
-            </a>
+            </Link>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-mist-muted">
               Pokhara's trusted, ICEF-accredited study-abroad consultancy since{" "}
               {company.foundedYear}. Turning dreams of global education into
@@ -78,12 +80,12 @@ export default function Footer() {
               <ul className="mt-4 space-y-3">
                 {links.map((l) => (
                   <li key={l.label}>
-                    <a
+                    <Link
                       href={l.href}
                       className="text-sm text-mist-muted transition-colors hover:text-ocean-deep"
                     >
                       {l.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -94,13 +96,13 @@ export default function Footer() {
         {/* Destinations ribbon */}
         <div className="mt-14 flex flex-wrap items-center gap-2 border-t border-ink-line pt-8">
           {destinations.map((d) => (
-            <a
+            <Link
               key={d.slug}
-              href="#destinations"
-              className="rounded-full border border-ink-line px-3 py-1.5 text-xs text-mist-muted transition-colors hover:border-azure hover:text-ocean-deep"
+              href={`/country/${d.slug}`}
+              className="inline-flex items-center gap-2 rounded-full border border-ink-line px-3 py-1.5 text-xs text-mist-muted transition-colors hover:border-azure hover:text-ocean-deep"
             >
-              {d.flag} {d.name}
-            </a>
+              <CountryFlag slug={d.slug} name={d.name} flag={d.flag} className="!h-4 !w-5" />{d.name}
+            </Link>
           ))}
         </div>
 

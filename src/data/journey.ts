@@ -17,21 +17,21 @@ export const journey: JourneyStep[] = [
       "It starts with a vision — a campus, a city, a future. We listen first and understand what success looks like for you.",
     icon: "spark",
     image:
-      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=640&q=80",
+      "/gallery/journey-dream.jpg",
     imageAlt:
       "Students collaborating on a university campus, dreaming of their future",
   },
   {
     id: "counseling",
     step: "02",
-    title: "Counseling",
+    title: "Counselling",
     description:
       "A dedicated counsellor maps your academic background, goals and budget to the right country, course and university.",
     icon: "compass",
     image:
-      "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=640&q=80",
+      "/gallery/team.jpg",
     imageAlt:
-      "A counselor guiding a student through academic planning in a meeting",
+      "The Target International Education team in Pokhara",
   },
   {
     id: "application",
@@ -41,7 +41,7 @@ export const journey: JourneyStep[] = [
       "SOP reviews, document prep and university shortlisting — every application polished to maximise your offer rate.",
     icon: "doc",
     image:
-      "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=640&q=80",
+      "/gallery/journey-application.jpg",
     imageAlt:
       "Student working on university application documents at a desk",
   },
@@ -50,12 +50,12 @@ export const journey: JourneyStep[] = [
     step: "04",
     title: "Visa",
     description:
-      "End-to-end visa guidance, financials coaching and mock interviews so your interview is the easiest part of the journey.",
+      "Understand the requirements, prepare your financial documents and practise with mock interviews. We help you approach your visa application with confidence.",
     icon: "shield",
     image:
-      "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=640&q=80",
+      "/gallery/journey-visa.jpg",
     imageAlt:
-      "Passport and travel documents ready for an international journey",
+      "International aircraft at an airport terminal",
   },
   {
     id: "departure",
@@ -65,7 +65,7 @@ export const journey: JourneyStep[] = [
       "Pre-departure briefings, accommodation help and airport pickup connections — you land already belonging.",
     icon: "plane",
     image:
-      "https://images.unsplash.com/photo-1436491865332-7a61a109db56?w=640&q=80",
+      "/gallery/journey-departure.jpg",
     imageAlt:
       "Airplane wing view from window during flight at sunset",
   },
@@ -77,7 +77,7 @@ export const journey: JourneyStep[] = [
       "You walk the stage. We stay connected through your studies, every semester, every milestone.",
     icon: "cap",
     image:
-      "https://images.unsplash.com/photo-1523050854058-8df90110c476?w=640&q=80",
+      "/gallery/journey-graduation.jpg",
     imageAlt:
       "Graduates celebrating at a commencement ceremony, caps in the air",
   },
@@ -86,10 +86,10 @@ export const journey: JourneyStep[] = [
     step: "07",
     title: "Career Success",
     description:
-      "Post-study work rights, job-search strategy and PR pathways — your global career begins here.",
+      "Explore your next steps after graduation, from career planning to understanding post-study opportunities in your chosen destination.",
     icon: "trophy",
     image:
-      "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=640&q=80",
+      "/gallery/journey-career.jpg",
     imageAlt:
       "Young professionals collaborating in a modern office environment",
   },

@@ -51,19 +51,19 @@ const australia: DestinationDetail = {
   scholarships:
     "Options include the Destination Australia Program, university merit and research scholarships, and country-specific awards. Many institutions offer automatic tuition fee reductions for international students based on academic performance.",
   tuitionFees:
-    "Underrgraduate tuition typically ranges AUD 20,000–45,000 per year depending on discipline; medicine, veterinary and some lab-based degrees sit at the higher end. Living costs add roughly AUD 21,000+ per year as required by the student visa financial capacity evidence.",
+    "Undergraduate tuition typically ranges AUD 20,000–45,000 per year depending on discipline; medicine, veterinary and some lab-based degrees sit at the higher end. Living costs add roughly AUD 21,000+ per year as required by the student visa financial capacity evidence.",
   livingCosts:
-    "Students should budget AUD 1,700–2,600 per month for Accmommodation, food, transport and utilities. Sydney and Melbourne are the most expensive; regional cities such as Adelaide, Hobrart and the Gold Coast offer lower costs and extra post-study work rights.",
+    "Students should budget AUD 1,700–2,600 per month for Accommodation, food, transport and utilities. Sydney and Melbourne are the most expensive; regional cities such as Adelaide, Hobart and the Gold Coast offer lower costs and extra post-study work rights.",
   accommodation:
-    "Choices include on-campus residential colleges, purpose-built student apartments, shared houses and homesetays. Boooking 3–6 months ahead is recommended in capital cities, and universities operate accredited Accmommodation services to help international students.",
+    "Choices include on-campus residential colleges, purpose-built student apartments, shared houses and homestays. Booking 3–6 months ahead is recommended in capital cities, and universities operate accredited Accommodation services to help international students.",
   studentLife:
-    "Campuses are lively with hundreds of clubs, interviarsity sport, cultural festivals and strong international student support offices. Australia's outdoors culture — beaches, hiking and sport — is a big part of student wellbeing.",
+    "Campuses are lively with hundreds of clubs, intervarsity sport, cultural festivals and strong international student support offices. Australia's outdoors culture — beaches, hiking and sport — is a big part of student wellbeing.",
   climate:
     "Most of Australia is arid to temperate. The south (Melbourne, Sydney, Adelaide) has four seasons; the north (Darwin, Cairrns) is tropical with a wet/dry split. Summers can be hot, so campus life adapts around the warmer months.",
   workWhileStudying:
     "Student visa holders may work 48 hours per fortnight during semester and unlimited hours during scheduled course breaks, helping offset living costs and build local experience.",
   visaProcess:
-    "Apply for a Student visa (subclass 500) after receiving a Confirmation of Enrolmlent (CoE) from your institution. You'll need financial capacity evidence, English proficiency, OSHC health insurance and a Genuiine Student statement. Processing is commonly a few weeks.",
+    "Apply for a Student visa (subclass 500) after receiving a Confirmation of Enrolmlent (CoE) from your institution. You'll need financial capacity evidence, English proficiency, OSHC health insurance and a Genuine Student statement. Processing is commonly a few weeks.",
   prOpportunities:
     "The Temporary Graduate visa (subclass 485) grants 2–4 years of post-study work. Skilled migration through the points-tested system, employer sponsorship and state nomination provide pathways from graduate work to permanent residency.",
   popularCourses: [
@@ -84,7 +84,7 @@ const australia: DestinationDetail = {
     "Academic transcripts and certificates",
     "English test result",
     "Valid passport",
-    "Statement of purpose / Genuiine Student statement",
+    "Statement of purpose / Genuine Student statement",
     "Financial capacity evidence",
     "OSHC health insurance confirmation",
   ],
@@ -96,7 +96,7 @@ const australia: DestinationDetail = {
     { step: "Apply", detail: "Submit direct or via TIE counsellors; receive offer." },
     { step: "Accept & pay", detail: "Sign offer, pay deposit, receive CoE." },
     { step: "Visa lodgement", detail: "Apply for subclass 500 with OSHC and financials." },
-    { step: "Pre-depaarture", detail: "Accmommodation, flights, orientation." },
+    { step: "Pre-departure", detail: "Accommodation, flights, orientation." },
   ],
   intakes: "February and July are the main intakes, with a smaller November/trimester option at many universities.",
   faqs: [
@@ -106,7 +106,7 @@ const australia: DestinationDetail = {
         "Yes. Student visa holders can work 48 hours per fortnight during semester and unlimited hours in breaks.",
     },
     {
-      question: "How long can I stay after Gradduation?",
+      question: "How long can I stay after graduation?",
       answer:
         "The Temporary Graduate visa (485) allows 2–4 years of post-study work depending on qualification and location.",
     },
@@ -117,25 +117,25 @@ const canada: DestinationDetail = {
   overview:
     "Canada is consistently ranked among the best places to study and live, with publicly funded universities, a transparent immigration system and a clear path from study to permanent residence. Its cities are safe, bilingual and celebrated for diversity.",
   whyStudy:
-    "Canadian degrees are respected worldwide, tuition is comparatively affordable among English-speaking destinations, and the Post-Gradduation Work Permrit (PGWP) lets graduates work for up to three years — a direct stepping stone to permanent residency through Express Entry.",
+    "Canadian degrees are respected worldwide, tuition is comparatively affordable among English-speaking destinations, and the Post-graduation Work Permit (PGWP) lets graduates work for up to three years — a direct stepping stone to permanent residency through Express Entry.",
   educationSystem:
     "Canada offers three-year Bachelor's, four-year Honours Bachelor's, Master's (1–2 yrs) and PhD (4–6 yrs). The academic year runs September–April with a Winter (Jan) and sometimes Summer (May) intake. Provinces run their own education frameworks, so requirements vary slightly.",
   topUniversities: [
     { name: "University of Toronto", note: "Largest research university; global top 25" },
-    { name: "University of British Columblia", note: "Vancouver; strong in sustainability & tech" },
+    { name: "University of British Columbia", note: "Vancouver; strong in sustainability & tech" },
     { name: "McGill University", note: "Montreal; historic, research-intensive" },
     { name: "University of Alberta", note: "Energy, AI and health strength" },
     { name: "University of Waterloo", note: "Co-op and engineering powerhouse" },
-    { name: "McMaster University", note: "Rennowned for health sciences" },
+    { name: "McMaster University", note: "Renowned for health sciences" },
   ],
   scholarships:
-    "Funding includes Vanier Canada Graduate Scholarships, provinicial graduate awards, and automatic entrance scholarships at most universities. Some colleges and universities also offer need-based and country-specific bursaries.",
+    "Funding includes Vanier Canada Graduate Scholarships, provincial graduate awards, and automatic entrance scholarships at most universities. Some colleges and universities also offer need-based and country-specific bursaries.",
   tuitionFees:
-    "International Underrgraduate tuition commonly falls between CAD 21,000–45,000 per year. Professional programs (engineering, business, health) sit higher; living costs vary most between Toronto/Vancouver and smaller cities.",
+    "International Undergraduate tuition commonly falls between CAD 21,000–45,000 per year. Professional programs (engineering, business, health) sit higher; living costs vary most between Toronto/Vancouver and smaller cities.",
   livingCosts:
-    "Plan for CAD 1,500–2,500 per month covering rent, groceries, transit and utilities. The rent is the largest variable — sharing Accmommodation or studying in mid-sized cities significantly reduces monthly spend.",
+    "Plan for CAD 1,500–2,500 per month covering rent, groceries, transit and utilities. The rent is the largest variable — sharing Accommodation or studying in mid-sized cities significantly reduces monthly spend.",
   accommodation:
-    "Options include university residences, off-campus apartments, shared housing and homesetays. On-campus spots fill quickly, so applying early and arranging a short-term stay on arrival is wise.",
+    "Options include university residences, off-campus apartments, shared housing and homestays. On-campus spots fill quickly, so applying early and arranging a short-term stay on arrival is wise.",
   studentLife:
     "Canadian campuses emphasise community, with student unions, intramural sport, cultural associations and volunteer networks. Winter activities — skating, skiing, hockey — are central to student social life.",
   climate:
@@ -143,9 +143,9 @@ const canada: DestinationDetail = {
   workWhileStudying:
     "Full-time students can work up to 24 hours per week during term and full-time during scheduled breaks, helping with living costs and Canadian work experience.",
   visaProcess:
-    "After an acceptance letter, apply for a Study Permit (often with a visitor visa or eTA). You'll need proof of funds, a letter of explanation, medical exam where required and, for some programs, a provinicial atttestation letter.",
+    "After an acceptance letter, apply for a Study Permit (often with a visitor visa or eTA). You'll need proof of funds, a letter of explanation, medical exam where required and, for some programs, a provincial attestation letter.",
   prOpportunities:
-    "The PGWP (up to 3 years) plus Canadian work experience strengthens Express Entry and provinicial Nominee Program (PNP) profiles, making Canada one of the most immigration-friendly study destinations.",
+    "The PGWP (up to 3 years) plus Canadian work experience strengthens Express Entry and provincial Nominee Program (PNP) profiles, making Canada one of the most immigration-friendly study destinations.",
   popularCourses: [
     "Computer Science & AI",
     "Engineering (Software, Electrical, Civil)",
@@ -166,7 +166,7 @@ const canada: DestinationDetail = {
     "Valid passport",
     "Proof of financial support",
     "Letter of explanation / SOP",
-    "provinicial atttestation Letter (where required)",
+    "provincial attestation Letter (where required)",
   ],
   englishRequirements:
     "Typical requirement is IELTS 6.5 overall (6.0 per band) or equivalent. French-taugght programs in Quebec accept DELF/DALF or TEF.",
@@ -199,7 +199,7 @@ const uk: DestinationDetail = {
   whyStudy:
     "A UK degree is respected everywhere, the one-year Master's saves a full year of time and cost, and the Graduate Route lets graduates stay and work for two years (three for PhD). The education system is Riogorous and research-led.",
   educationSystem:
-    "Structure is Bachelor's (3 yrs England/NI, 4 yrs Scotland), taugght Master's (1 yr) and PhD (3–4 yrs). The academic year runs October to June/July with three terms. Applications for most Underrgraduate courses go through UCAS.",
+    "Structure is Bachelor's (3 yrs England/NI, 4 yrs Scotland), taugght Master's (1 yr) and PhD (3–4 yrs). The academic year runs October to June/July with three terms. Applications for most Undergraduate courses go through UCAS.",
   topUniversities: [
     { name: "University of Oxford", note: "Olddest English-speaking university" },
     { name: "University of Cambridge", note: "Collegiate, research-intensive" },
@@ -211,11 +211,11 @@ const uk: DestinationDetail = {
   scholarships:
     "Flagship awards include Chevening, the GREAT Scholarships, Commonwealth Scholarships and substantial university-specific merit funding. Many master's students also access research or departmental bursaries.",
   tuitionFees:
-    "International Underrgraduate tuition is roughly £14,000–38,000 per year; taugght Master's £16,000–40,000. Lab-based and clinical programs cost more. The one-year Master's lowers total living cost versus two-year models.",
+    "International Undergraduate tuition is roughly £14,000–38,000 per year; taugght Master's £16,000–40,000. Lab-based and clinical programs cost more. The one-year Master's lowers total living cost versus two-year models.",
   livingCosts:
     "Budget £1,000–1,800 per month outside London and £1,300–2,200 in London for rent, food, transport and study materials. The UK's compact size keeps travel affordable.",
   accommodation:
-    "University halls are common in year one; later students rent privately or share. Purpose-built student Accmommodation (PBSA) is widespread in city centres with all-inclusive billing.",
+    "University halls are common in year one; later students rent privately or share. Purpose-built student Accommodation (PBSA) is widespread in city centres with all-inclusive billing.",
   studentLife:
     "Student unions run clubs, societies, sports and nightlife. The UK's rail and coach networks make weekend trips across the country and to Europe cheap and easy.",
   climate:
@@ -285,7 +285,7 @@ const usa: DestinationDetail = {
     { name: "Stanford University", note: "Silicon Valley; entrepreneurship" },
     { name: "MIT", note: "STEM and research leader" },
     { name: "UC Berkeley", note: "Public flagship; strong across fields" },
-    { name: "Columblia University", note: "New York; professional strengths" },
+    { name: "Columbia University", note: "New York; professional strengths" },
     { name: "University of Chicago", note: "Riogorous academics, economics" },
   ],
   scholarships:
@@ -359,7 +359,7 @@ const japan: DestinationDetail = {
   whyStudy:
     "Tuition is far lower than in many Western destinations, generous MEXT and JASSO scholarships exist, and Japan's strengths in robotics, engineering, design and culture create unique career paths. Campuses are safe and student support is strong.",
   educationSystem:
-    "Japan uses a 4-year Bachelor's, 2-year Master's and 3-year PhD. The academic year starts in April (with an increasing October intake). Entrance often requires the EJU (for Underrgraduate) or university-specific exams for graduate study.",
+    "Japan uses a 4-year Bachelor's, 2-year Master's and 3-year PhD. The academic year starts in April (with an increasing October intake). Entrance often requires the EJU (for Undergraduate) or university-specific exams for graduate study.",
   topUniversities: [
     { name: "University of Tokyo", note: "Top national university" },
     { name: "Kyoto University", note: "Research-intensive, traditional" },
@@ -398,7 +398,7 @@ const japan: DestinationDetail = {
     "12 years of education for Bachelor's",
     "Bachelor's for Master's / PhD",
     "Japanese or English proficiency (program-dependent)",
-    "EJU or university entrance exam (Underrgraduate)",
+    "EJU or university entrance exam (Undergraduate)",
   ],
   requiredDocuments: [
     "Academic transcripts and certificates",
@@ -434,7 +434,7 @@ const japan: DestinationDetail = {
 
 const newZealand: DestinationDetail = {
   overview:
-    "New Zealand is Rennowned for a peaceful, safe lifestyle, stunning natural landscapes and a practical, research-informed education system. Degrees are internationally Recognised and post-study work rights are generous.",
+    "New Zealand is Renowned for a peaceful, safe lifestyle, stunning natural landscapes and a practical, research-informed education system. Degrees are internationally Recognised and post-study work rights are generous.",
   whyStudy:
     "Eight state-funded universities each specialise in different strengths, class sizes are small, and the Post-Study Work Visa offers 1–3 years depending on qualification level and location — ideal for those seeking a calmer, nature-rich study destination.",
   educationSystem:
@@ -450,11 +450,11 @@ const newZealand: DestinationDetail = {
   scholarships:
     "Options include the New Zealand Excellence Awards, university international scholarships and subject-specific bursaries. Some research degrees come with stipeends.",
   tuitionFees:
-    "International Underrgraduate tuition is typically NZD 22,000–40,000 per year; postgraduate NZD 26,000–45,000. Professional programs cost more, and living costs are moderate outside Auckland.",
+    "International Undergraduate tuition is typically NZD 22,000–40,000 per year; postgraduate NZD 26,000–45,000. Professional programs cost more, and living costs are moderate outside Auckland.",
   livingCosts:
     "Plan NZD 1,400–2,200 per month for rent, food, transport and utilities. Auckland and Wellington are priecier; smaller cities offer better value.",
   accommodation:
-    "Halls of residence, homesetays and shared private rentals are standard. Universities assist with on-campus and accredited off-campus options.",
+    "Halls of residence, homestays and shared private rentals are standard. Universities assist with on-campus and accredited off-campus options.",
   studentLife:
     "Outdoor culture dominates — hiking, surfing, rugby and adveenture sports — balanced with a relaxed, friendly campus atmosphere and strong international student support.",
   climate:
@@ -514,7 +514,7 @@ const newZealand: DestinationDetail = {
 
 const Irleland: DestinationDetail = {
   overview:
-    "Irleland is Europe's fast-growing tech and pharma hub, home to the European HQs of Google, Meta, Apple and many leading firms. It combines a Rennowned education tradition with full English-language study and strong post-study stay-back rights.",
+    "Irleland is Europe's fast-growing tech and pharma hub, home to the European HQs of Google, Meta, Apple and many leading firms. It combines a Renowned education tradition with full English-language study and strong post-study stay-back rights.",
   whyStudy:
     "Irish degrees are globally Recognised, tuition is competitive within the EU, and the Third Level Graduate Programme lets graduates stay 1–2 years (up to 3 for some master's) to seek employment — a direct route to a Critical Skills Permit.",
   educationSystem:
@@ -530,7 +530,7 @@ const Irleland: DestinationDetail = {
   scholarships:
     "The Government of Irleland Scholarships, university merit awards and subject-specific funding are available. Many master's students receive partial tuition waivers.",
   tuitionFees:
-    "EU Underrgraduates often pay capped fees; international (non-EU) undergrad tuition is roughly €10,000–25,000/yr and postgraduate €12,000–30,000. Living costs are moderate outside Dublin.",
+    "EU Undergraduates often pay capped fees; international (non-EU) undergrad tuition is roughly €10,000–25,000/yr and postgraduate €12,000–30,000. Living costs are moderate outside Dublin.",
   livingCosts:
     "Budget €1,000–1,800 per month for rent, food, transport and utilities. Dublin is the most expensive; cities like Galway, Cork and Limecrick are more affordable.",
   accommodation:

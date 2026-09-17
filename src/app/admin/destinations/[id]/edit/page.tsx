@@ -1,18 +1,23 @@
 import prisma from "@/lib/db";
 import { notFound } from "next/navigation";
+import { requireAdmin } from "@/lib/auth";
+import { redirect } from "next/navigation";
 import Link from "next/link";
 
 export const dynamic = "force-dynamic";
-import { 
-  updateCountry, 
-  addUniversity, 
-  deleteUniversity, 
-  addScholarship, 
+import {
+  updateCountry,
+  addUniversity,
+  deleteUniversity,
+  addScholarship,
   deleteScholarship,
-  addFAQ, 
+  addFAQ,
   deleteFAQ,
   addTestimonial,
-  deleteTestimonial
+  deleteTestimonial,
+  setTestimonialVisaStatus,
+  reorderItems,
+  toggleVisibility,
 } from "@/lib/actions";
 
 export default async function EditCountryPage({
@@ -20,6 +25,11 @@ export default async function EditCountryPage({
 }: {
   params: { id: string };
 }) {
+  const token = requireAdmin();
+  if (!token) {
+    redirect("/admin");
+  }
+
   const country = await prisma.country.findUnique({
     where: { id: params.id },
     include: {
@@ -216,6 +226,29 @@ export default async function EditCountryPage({
                 </div>
               </div>
 
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">Sort Order</label>
+                  <input
+                    type="number"
+                    name="sortOrder"
+                    defaultValue={country.sortOrder}
+                    className="mt-1 block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-ocean sm:text-sm"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">Visibility</label>
+                  <select
+                    name="published"
+                    defaultValue={country.published ? "true" : "false"}
+                    className="mt-1 block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-ocean sm:text-sm"
+                  >
+                    <option value="true">Published (visible publicly)</option>
+                    <option value="false">Hidden (draft)</option>
+                  </select>
+                </div>
+              </div>
+
               <div className="border-t pt-5">
                 <button
                   type="submit"
@@ -237,11 +270,18 @@ export default async function EditCountryPage({
                 {country.universities.map((uni) => (
                   <li key={uni.id} className="flex items-center justify-between py-2 text-sm text-gray-800">
                     <span>{uni.name}</span>
-                    <form action={deleteUniversity.bind(null, uni.id, country.id)}>
-                      <button type="submit" className="text-xs text-red-500 hover:text-red-700">
-                        Remove
-                      </button>
-                    </form>
+                    <div className="flex items-center gap-2">
+                      <form action={toggleVisibility.bind(null, country.id, "university", uni.id, !uni.published)}>
+                        <button type="submit" className={`text-xs ${uni.published ? "text-emerald-600" : "text-slate-400"}`}>
+                          {uni.published ? "Visible" : "Hidden"}
+                        </button>
+                      </form>
+                      <form action={deleteUniversity.bind(null, uni.id, country.id)}>
+                        <button type="submit" className="text-xs text-red-500 hover:text-red-700">
+                          Remove
+                        </button>
+                      </form>
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -296,11 +336,18 @@ export default async function EditCountryPage({
                   <li key={faq.id} className="py-2 text-sm text-gray-800 space-y-1">
                     <div className="flex items-center justify-between">
                       <span className="font-semibold">{faq.question}</span>
-                      <form action={deleteFAQ.bind(null, faq.id, country.id)}>
-                        <button type="submit" className="text-xs text-red-500 hover:text-red-700">
-                          Remove
-                        </button>
-                      </form>
+                      <div className="flex items-center gap-2">
+                        <form action={toggleVisibility.bind(null, country.id, "faq", faq.id, !faq.published)}>
+                          <button type="submit" className={`text-xs ${faq.published ? "text-emerald-600" : "text-slate-400"}`}>
+                            {faq.published ? "Visible" : "Hidden"}
+                          </button>
+                        </form>
+                        <form action={deleteFAQ.bind(null, faq.id, country.id)}>
+                          <button type="submit" className="text-xs text-red-500 hover:text-red-700">
+                            Remove
+                          </button>
+                        </form>
+                      </div>
                     </div>
                   </li>
                 ))}
@@ -322,6 +369,69 @@ export default async function EditCountryPage({
                 />
                 <button type="submit" className="w-full rounded bg-ocean px-2.5 py-1 text-xs font-semibold text-white hover:bg-ocean-deep">
                   Add FAQ
+                </button>
+              </form>
+            </div>
+
+            {/* Testimonials */}
+            <div className="bg-white p-6 rounded-2xl shadow space-y-4">
+              <h3 className="text-lg font-semibold text-gray-900 border-b pb-2">Student stories</h3>
+              <p className="text-xs text-gray-500">Published stories marked as visa granted appear in the success carousel. Confirm the student’s approval before enabling this status.</p>
+              <ul className="divide-y divide-gray-100 max-h-48 overflow-y-auto space-y-2">
+                {country.testimonials.map((tt) => (
+                  <li key={tt.id} className="py-2 text-sm text-gray-800 space-y-1">
+                    <div className="flex items-center justify-between">
+                      <span className="font-semibold">{tt.studentName}</span>
+                      <div className="flex items-center gap-2">
+                        <form action={toggleVisibility.bind(null, country.id, "testimonial", tt.id, !tt.published)}>
+                          <button type="submit" className={`text-xs ${tt.published ? "text-emerald-600" : "text-slate-400"}`}>
+                            {tt.published ? "Visible" : "Hidden"}
+                          </button>
+                        </form>
+                        <form action={deleteTestimonial.bind(null, tt.id, country.id)}>
+                          <button type="submit" className="text-xs text-red-500 hover:text-red-700">
+                            Remove
+                          </button>
+                        </form>
+                      </div>
+                    </div>
+                    <p className="text-xs text-gray-500 line-clamp-2">{tt.quote}</p>
+                    <form action={setTestimonialVisaStatus.bind(null, tt.id, country.id, !tt.visaGranted)}>
+                      <button type="submit" className="text-xs font-semibold text-ocean underline underline-offset-2">{tt.visaGranted ? "Visa granted · remove status" : "Confirm visa granted"}</button>
+                    </form>
+                  </li>
+                ))}
+              </ul>
+              <form action={addTestimonial.bind(null, country.id)} className="pt-2 space-y-2">
+                <input
+                  type="text"
+                  name="studentName"
+                  required
+                  placeholder="Student name"
+                  className="w-full rounded-md border-0 py-1 px-2 text-xs text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-ocean"
+                />
+                <textarea
+                  name="quote"
+                  required
+                  rows={2}
+                  placeholder="Quote"
+                  className="w-full rounded-md border-0 py-1 px-2 text-xs text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-ocean"
+                />
+                <input
+                  type="text"
+                  name="avatar"
+                  placeholder="Avatar image URL (optional)"
+                  className="w-full rounded-md border-0 py-1 px-2 text-xs text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-ocean"
+                />
+                <label className="block text-xs font-medium text-gray-700">Story source URL (optional)
+                  <input type="url" name="sourceUrl" placeholder="https://..." className="mt-1 w-full rounded-md border px-2 py-1 text-xs" />
+                </label>
+                <label className="flex items-start gap-2 text-xs text-gray-700">
+                  <input type="checkbox" name="visaGranted" className="mt-0.5" />
+                  I confirm this student has been granted a visa.
+                </label>
+                <button type="submit" className="w-full rounded bg-ocean px-2.5 py-1 text-xs font-semibold text-white hover:bg-ocean-deep">
+                  Add student story
                 </button>
               </form>
             </div>

@@ -1,8 +1,8 @@
 # TIE Nepal — Build Progress Tracker
-**Last updated:** 2026-07-02
+**Last updated:** 2026-09-16
 **Branch:** `sky-blue` → https://github.com/safalkunwar/TIE
 **Working dir:** `C:\Users\Acer\OneDrive\Desktop\target\TIE` (D:\safety\TIE is backup)
-**Build state:** ✅ Compiles, 0 errors, 155 kB First Load JS
+**Build state:** ✅ Production build passes, 0 lint/type errors, 173 kB homepage First Load JS
 **To run:** `cd TIE && npm run build && npm start` → http://localhost:3000
 
 ---
@@ -55,12 +55,26 @@
 - [x] Integrate dynamic data into Navbar and Destinations cards
 - [x] Create dynamic country detail page template `/country/[slug]` with modular sections
 
-### DreamJourney — needs 2 specific tweaks
-- [ ] **Boxes strictly alternating left/right** (currently uses alternating but user wants clearer L-R-L-R). Verify the `[direction:rtl]` flip works on desktop. The logic IS there (`right = i % 2 === 1`) but may need visual verification.
-- [ ] **Background picture** behind the journey section to make it attractive (user asked for this — NOT yet added). Add a subtle, low-opacity campus/world image or a stronger gradient.
+### Globe & DreamJourney — completed locally on 2026-09-15
+- [x] Snapchat-inspired pastel globe with recognizable Natural Earth geography, hosted in `public/maps/world.svg`.
+- [x] TIE logo location pin over Pokhara, clickable destination pins, selected-country camera movement, and a correctly anchored flight route.
+- [x] Globe pins and details share the published country data; empty lists are safe.
+- [x] Pause/recenter controls, reduced-motion support, off-screen rendering pause, and a non-WebGL map fallback.
+- [x] **Boxes strictly alternating left/right** on desktop, with one readable timeline on mobile and one progress reference.
+- [x] **Background picture**: soft graduation photo behind the journey section.
+- [x] Replaced broken journey image URLs and stored all timeline imagery locally.
+- [x] Production build, lint, TypeScript, and `npx tsx scripts/check-globe.ts` pass. Desktop and 390px mobile layouts checked in the browser.
+- These changes are local and have not been committed or deployed.
+
+### Success stories — completed locally on 2026-09-16
+- [x] Featured story with a separate portrait, readable quote, destination caption, and consultation link.
+- [x] Country filters, selectable student previews, previous/next controls, keyboard navigation, and touch gestures.
+- [x] Removed decorative video controls; empty details no longer create blank badges.
+- [x] Missing or unsupported photos use initials; an empty published list has a useful consultation state.
+- [x] Existing admin stories preserved. Desktop and 390px mobile layout, filtering, single-story controls, and keyboard wrapping checked.
 
 ### User asked but needs confirmation
-- [ ] "add other information from facebook page" — gathered intel (services, leadership, mission/vision) into company.ts, but not all displayed on page. Could add a dedicated "Our Services" section using `company.services` array.
+- [x] "add other information from facebook page" — added dedicated "Our Services" section to homepage using `company.services` array (Services.tsx was pre-built but unmounted; now rendered between About and Globe).
 
 ---
 
@@ -68,7 +82,7 @@
 - **Disk space on C:** was critical (5 GB free caused build hangs). Cleaned to ~12 GB. If build hangs → `Remove-Item $env:TEMP\* -Recurse -Force; npm cache clean --force`
 - **node.exe processes** linger and lock `.next`. Before build: kill them (see run script below)
 - `tie-logo-full.png` (169×41) is a JPEG mislamed as .png — works but could be re-saved. Low priority.
-- Globe earth texture loads from githubusercontent (NASA Blue Marble) — needs internet on first load. If offline, falls back to nothing (would need a local copy in `public/`)
+- Globe map and journey imagery are now local assets; attribution is in `public/maps/README.md` and `public/gallery/journey-sources.md`.
 
 ---
 

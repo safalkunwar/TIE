@@ -18,13 +18,14 @@ import prisma from "@/lib/db";
 
 export default async function Home() {
   const dbCountries = await prisma.country.findMany({
+    where: { published: true },
     include: {
-      universities: true,
-      countryScholarships: true,
-      faqs: true,
-      testimonials: true,
+      universities: { where: { published: true }, orderBy: { sortOrder: "asc" } },
+      countryScholarships: { where: { published: true }, orderBy: { sortOrder: "asc" } },
+      faqs: { where: { published: true }, orderBy: { sortOrder: "asc" } },
+      testimonials: { where: { published: true, visaGranted: true }, orderBy: { sortOrder: "asc" } },
     },
-    orderBy: { createdAt: "asc" },
+    orderBy: { sortOrder: "asc" },
   });
 
   // Map to static destination structure if needed, adding defaults
@@ -47,6 +48,23 @@ export default async function Home() {
     lng: c.lng || 0,
   }));
 
+  // DB-backed testimonials for the homepage success stories section
+  const testimonials = dbCountries.flatMap((c) =>
+    c.testimonials.map((t) => ({
+      name: t.studentName,
+      destination: c.name,
+      slug: c.slug,
+      flag: c.flag,
+      university: "",
+      program: "",
+      scholarship: "",
+      quote: t.quote,
+      image: t.avatar || "",
+      visaGranted: t.visaGranted,
+      sourceUrl: t.sourceUrl,
+    })),
+  );
+
   return (
     <>
       <Navbar countries={countries} />
@@ -55,10 +73,11 @@ export default async function Home() {
         <MobileStats />
         <Stats />
         <About />
+        <Services />
         <Globe countries={countries} />
         <Destinations countries={countries} />
         <DreamJourney />
-        <Testimonials />
+        <Testimonials testimonials={testimonials} />
         <SocialProof />
         <Credentials />
         <CTA countries={countries} />

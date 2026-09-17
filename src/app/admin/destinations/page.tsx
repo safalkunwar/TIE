@@ -1,11 +1,18 @@
 import prisma from "@/lib/db";
 import { deleteCountry } from "@/lib/actions";
+import { requireAdmin } from "@/lib/auth";
+import { redirect } from "next/navigation";
 import Link from "next/link";
 import { logoutAdmin } from "../actions";
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminDestinationsPage() {
+  const token = requireAdmin();
+  if (!token) {
+    redirect("/admin");
+  }
+
   const countries = await prisma.country.findMany({
     orderBy: { createdAt: 'asc' }
   });
