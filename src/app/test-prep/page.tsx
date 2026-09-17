@@ -22,8 +22,8 @@ export const metadata = {
 const credentials = [
   { logo: "/gallery/govt-approval.jpg", title: "Govt. Approved", desc: "Ministry of Education, Nepal" },
   { logo: "/gallery/icef-accredited.png", title: "ICEF Accredited", desc: "Trusted agency (IAS 3944)" },
-  { logo: "/gallery/ecan-logo.svg", title: "ECAN Member", desc: "Educational Consultancy Association of Nepal" },
-  { logo: "/gallery/british-council-logo.svg", title: "British Council Agent", desc: "Authorised UK education partner" },
+  { logo: "/gallery/ecan-logo.jpg", title: "ECAN Member", desc: "Educational Consultancy Association of Nepal" },
+  { logo: "/gallery/british-council-logo.png", title: "British Council Agent", desc: "Authorised UK education partner" },
 ] as const;
 
 export default async function TestPrepPage() {
