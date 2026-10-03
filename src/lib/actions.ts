@@ -202,3 +202,115 @@ async function getSlug(countryId: string): Promise<string> {
   const c = await prisma.country.findUnique({ where: { id: countryId } });
   return c?.slug || "";
 }
+
+// Video Testimonials
+export async function addVideoTestimonial(formData: FormData) {
+  requireAdmin();
+
+  const name = formData.get("name") as string;
+  const personType = formData.get("personType") as string;
+  const country = (formData.get("country") as string) || null;
+  const university = (formData.get("university") as string) || null;
+  const result = (formData.get("result") as string) || null;
+  const quote = (formData.get("quote") as string) || null;
+  const videoUrl = formData.get("videoUrl") as string;
+  const thumbnailUrl = formData.get("thumbnailUrl") as string;
+  const featured = formData.get("featured") === "on";
+  const displayOrder = formData.get("displayOrder") ? parseInt(formData.get("displayOrder") as string) : 0;
+  const published = formData.get("published") !== "false";
+
+  // Handle photos - convert comma-separated to JSON array
+  const photosRaw = (formData.get("photos") as string) || "[]";
+  const photosArray = photosRaw.split(",").filter(p => p.trim()).map(p => p.trim());
+  const photosJson = JSON.stringify(photosArray);
+
+  await prisma.videoTestimonial.create({
+    data: {
+      name,
+      personType,
+      country,
+      university,
+      result,
+      quote,
+      videoUrl,
+      thumbnailUrl,
+      photos: photosJson,
+      featured,
+      displayOrder,
+      published,
+    },
+  });
+
+  revalidatePath("/admin/video-testimonials");
+  revalidatePath("/");
+}
+
+export async function updateVideoTestimonial(id: string, formData: FormData) {
+  requireAdmin();
+
+  // Handle photos - convert comma-separated to JSON array
+  const photosRaw = (formData.get("photos") as string) || "[]";
+  const photosArray = photosRaw.split(",").filter(p => p.trim()).map(p => p.trim());
+  const photosJson = JSON.stringify(photosArray);
+
+  await prisma.videoTestimonial.update({
+    where: { id },
+    data: {
+      name: formData.get("name") as string,
+      personType: formData.get("personType") as string,
+      country: (formData.get("country") as string) || null,
+      university: (formData.get("university") as string) || null,
+      result: (formData.get("result") as string) || null,
+      quote: (formData.get("quote") as string) || null,
+      videoUrl: formData.get("videoUrl") as string,
+      thumbnailUrl: formData.get("thumbnailUrl") as string,
+      photos: photosJson,
+      featured: formData.get("featured") === "on",
+      displayOrder: formData.get("displayOrder") ? parseInt(formData.get("displayOrder") as string) : 0,
+      published: formData.get("published") !== "false",
+    },
+  });
+
+  revalidatePath("/admin/video-testimonials");
+  revalidatePath("/");
+}
+
+export async function deleteVideoTestimonial(id: string) {
+  requireAdmin();
+  await prisma.videoTestimonial.delete({ where: { id } });
+  revalidatePath("/admin/video-testimonials");
+  revalidatePath("/");
+}
+
+export async function toggleVideoFeatured(id: string, featured: boolean) {
+  requireAdmin();
+  await prisma.videoTestimonial.update({
+    where: { id },
+    data: { featured },
+  });
+  revalidatePath("/admin/video-testimonials");
+  revalidatePath("/");
+}
+
+export async function reorderVideoTestimonials(orderedIds: string[]) {
+  requireAdmin();
+  for (let i = 0; i < orderedIds.length; i++) {
+    const id = orderedIds[i];
+    await prisma.videoTestimonial.update({
+      where: { id },
+      data: { displayOrder: i },
+    });
+  }
+  revalidatePath("/admin/video-testimonials");
+  revalidatePath("/");
+}
+
+export async function toggleVideoVisibility(id: string, published: boolean) {
+  requireAdmin();
+  await prisma.videoTestimonial.update({
+    where: { id },
+    data: { published },
+  });
+  revalidatePath("/admin/video-testimonials");
+  revalidatePath("/");
+}

@@ -4,6 +4,24 @@ import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Icon from "@/components/ui/Icon";
 import { company } from "@/data/company";
+import VideoTestimonials from "@/components/VideoTestimonial";
+
+type Props = {
+  videoTestimonials?: Array<{
+    id: string;
+    name: string;
+    personType: "student" | "parent";
+    country: string;
+    university?: string;
+    result?: string;
+    quote?: string;
+    videoUrl: string;
+    thumbnailUrl: string;
+    featured: boolean;
+    displayOrder: number;
+    published: boolean;
+  }>;
+};
 
 const affiliationLogos = [
   { src: "/gallery/membership.jpg", alt: "ECAN, ICEF, British Council, IDP, PTE, Duolingo, OET, Government of Nepal" },
@@ -32,7 +50,7 @@ const credentials = [
   },
 ];
 
-export default function SocialProof() {
+export default function SocialProof({ videoTestimonials = [] }: Props) {
   return (
     <section id="why" className="section relative">
       <div className="container-x">
@@ -68,8 +86,11 @@ export default function SocialProof() {
           ))}
         </div>
 
+        {/* Video Testimonials */}
+        <VideoTestimonials videos={videoTestimonials} />
+
         {/* Partner ribbon */}
-<div className="mt-14 rounded-4xl border border-ink-line bg-white/60 py-8 shadow-blue-soft backdrop-blur">
+        <div className="mt-14 rounded-4xl border border-ink-line bg-white/60 py-8 shadow-blue-soft backdrop-blur">
           <p className="mb-6 text-center text-xs uppercase tracking-[0.25em] text-mist-muted">
             Official partners & affiliations
           </p>

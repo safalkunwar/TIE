@@ -28,6 +28,22 @@ export default async function Home() {
     orderBy: { sortOrder: "asc" },
   });
 
+  // DB-backed video testimonials for the Proof section
+  const videoTestimonials = await prisma.videoTestimonial.findMany({
+    where: { published: true },
+    orderBy: { displayOrder: "asc" },
+  });
+
+  // Cast to expected frontend type (Prisma returns nullable fields)
+  const videoTestimonialsFormatted = videoTestimonials.map((v) => ({
+    ...v,
+    personType: (v.personType as "student" | "parent") || "student",
+    country: v.country || "Unknown",
+    result: v.result ?? undefined,
+    university: v.university ?? undefined,
+    quote: v.quote ?? undefined,
+  }));
+
   // Map to static destination structure if needed, adding defaults
   const countries = dbCountries.map((c) => ({
     slug: c.slug,
@@ -78,7 +94,7 @@ export default async function Home() {
         <Destinations countries={countries} />
         <DreamJourney />
         <Testimonials testimonials={testimonials} />
-        <SocialProof />
+        <SocialProof videoTestimonials={videoTestimonialsFormatted} />
         <Credentials />
         <CTA countries={countries} />
       </main>

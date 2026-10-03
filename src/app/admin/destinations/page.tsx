@@ -36,8 +36,15 @@ export default async function AdminDestinationsPage() {
       </header>
       <main>
         <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-          <div className="mb-6 flex items-center justify-between">
-            <h2 className="text-xl font-semibold text-gray-800">All Countries</h2>
+<div className="mb-6 flex items-center justify-between">
+          <h2 className="text-xl font-semibold text-gray-800">All Countries</h2>
+          <div className="flex gap-3">
+            <Link
+              href="/admin/video-testimonials"
+              className="rounded-md bg-sky-50 px-4 py-2 text-sm font-medium text-ocean hover:bg-sky-100"
+            >
+              Video Testimonials
+            </Link>
             <Link
               href="/admin/destinations/new"
               className="rounded-md bg-ocean px-4 py-2 text-sm font-medium text-white hover:bg-ocean-deep"
@@ -45,6 +52,7 @@ export default async function AdminDestinationsPage() {
               Add New Country
             </Link>
           </div>
+        </div>
 
           <div className="overflow-hidden rounded-lg bg-white shadow">
             <ul role="list" className="divide-y divide-gray-200">
