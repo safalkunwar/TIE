@@ -109,6 +109,7 @@ model VideoTestimonial {
   videoUrl     String
   thumbnailUrl String
   photos       String?  // JSON array of photo URLs
+  uploadId     String?  // unique id for uploaded media (video/photos)
   featured     Boolean  @default(false)
   displayOrder Int      @default(0)
   published    Boolean  @default(true)

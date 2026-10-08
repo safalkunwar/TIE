@@ -15,7 +15,7 @@ export type VideoTestimonial = {
   quote?: string;
   videoUrl: string;
   thumbnailUrl: string;
-  photos?: string[];
+  photos?: string | null;
   featured: boolean;
   displayOrder: number;
   published: boolean;
@@ -196,7 +196,7 @@ export default function VideoTestimonials({
   const published = videos.filter((v) => v.published);
 
   // Parse photos JSON strings to arrays
-  const parsePhotos = (photosJson?: string): string[] => {
+  const parsePhotos = (photosJson?: string | null): string[] => {
     if (!photosJson) return [];
     try {
       const parsed = JSON.parse(photosJson);
@@ -288,16 +288,16 @@ export default function VideoTestimonials({
     return null;
   }
 
-  return (
+return (
     <section id="video-testimonials" className="section relative pt-24 pb-12">
       <div className="container-x">
         <div className="grid gap-6 lg:grid-cols-3">
           <div className="lg:col-span-2">
-            <VideoFrameCard testimonial={featured} onPlay={handlePlay} />
+            <VideoFrameCard testimonial={featured as VideoTestimonial} onPlay={handlePlay} />
           </div>
           <div className="flex flex-col gap-6">
             {supporting.map((v) => (
-              <VideoFrameCard key={v.id} testimonial={v} onPlay={handlePlay} />
+              <VideoFrameCard key={v.id} testimonial={v as VideoTestimonial} onPlay={handlePlay} />
             ))}
           </div>
         </div>

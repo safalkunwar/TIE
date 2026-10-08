@@ -22,7 +22,6 @@ function parsePhotos(json: string | null | undefined): string[] {
     return json.split(",").filter((p) => p.trim()).map((p) => p.trim());
   }
 }
-}
 
 export default async function AdminVideoTestimonialsPage() {
   const token = requireAdmin();

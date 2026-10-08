@@ -30,3 +30,7 @@ next-env.d.ts.bak
 images/
 
 /src/generated/prisma
+
+# logs and build artifacts
+*.log
+build.log

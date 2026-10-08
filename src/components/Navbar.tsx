@@ -10,13 +10,12 @@ import { destinations as staticDestinations } from "@/data/destinations";
 import DestinationsDropdown from "@/components/DestinationsDropdown";
 
 const links = [
-  { label: "About", href: "/#about" },
-  { label: "Destinations", href: "/#destinations" },
+  { label: "Home", href: "/" },
+  { label: "Destinations", href: "/destinations" },
+  { label: "About", href: "/about" },
   { label: "Test Prep", href: "/test-prep" },
   { label: "Services", href: "/services" },
-  { label: "Your Journey", href: "/#journey" },
-  { label: "Success Stories", href: "/#stories" },
-  { label: "Why TIE", href: "/#why" },
+  { label: "Book", href: "/book" },
 ];
 
 export default function Navbar({ countries }: { countries?: any[] }) {
@@ -169,7 +168,7 @@ export default function Navbar({ countries }: { countries?: any[] }) {
         </div>
       </nav>
 
-      {/* Mobile sheet */}
+      /* Mobile sheet */
       <div
         className={`fixed inset-0 z-40 transition-all duration-300 lg:hidden ${
           open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"

@@ -121,7 +121,11 @@
     @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
   }
   .section {
-    @apply py-24 sm:py-32;
+    @apply py-16 sm:py-20;
+  }
+  /* Mobile touch target utilities */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
   }
 
   /* Eyebrow label */
