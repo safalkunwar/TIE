@@ -7,11 +7,11 @@ const prisma = new PrismaClient();
 
 /**
  * Supplementary seed for nested relations that the base `seed.ts` does not
- * create (heroes, FAQs, testimonials, scholarships). Idempotent: skips rows
- * that already exist for a country, so re-running is safe.
+ * create (heroes, FAQs, testimonials, scholarships, authentic documents).
+ * Idempotent: skips rows that already exist for a country, so re-running is safe.
  */
 async function main() {
-  console.log('Seeding nested relations (heroes, FAQs, testimonials, scholarships)...');
+  console.log('Seeding nested relations (heroes, FAQs, testimonials, scholarships, authentic documents)...');
 
   for (const d of destinations) {
     const country = await prisma.country.findUnique({ where: { slug: d.slug } });

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Icon from "@/components/ui/Icon";
 
 type Tab = {
@@ -27,21 +27,34 @@ function isActive(href: string, pathname: string) {
 
 export default function MobileBottomNav() {
   const pathname = usePathname();
-  const [swipeOffset] = useState(0);
+  const [visible, setVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
-  const bind = useSwipeable({
-    onSwipeEnd: () => {
-      // Dismiss any open menus or close drawer
-    },
-  });
+  useEffect(() => {
+    const onScroll = () => {
+      const currentY = window.scrollY;
+      if (currentY > lastScrollY && currentY > 80) {
+        setVisible(false);
+      } else {
+        setVisible(true);
+      }
+      setLastScrollY(currentY);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [lastScrollY]);
 
   return (
     <nav
-      className="fixed inset-x-0 bottom-0 z-50 lg:hidden"
+      className="fixed inset-x-0 bottom-0 z-50 lg:hidden transition-all duration-300"
       aria-label="Mobile navigation"
     >
-      <div className="mx-auto max-w-lg bg-white/95 px-4 pt-2 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl border-t border-slate-200 shadow-lg">
-        <ul className="flex items-center justify-between" {...bind()}>
+      <div
+        className={`mx-auto max-w-lg bg-white/95 px-4 pt-2 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl border-t border-slate-200 shadow-lg transition-all duration-300 ${
+          visible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
+        }`}
+      >
+        <ul className="flex items-center justify-between">
           {tabs.map((tab) => {
             const active = isActive(tab.href, pathname);
             return (
@@ -51,7 +64,7 @@ export default function MobileBottomNav() {
                   className={`flex flex-col items-center gap-1 py-2.5 px-3 text-xs font-medium transition-all duration-300 ${
                     active
                       ? "text-ocean"
-                      : "text-slate-400 hover:text-slate-600"
+                      : "text-slate-400 active:text-slate-600"
                   }`}
                   aria-current={active ? "page" : undefined}
                 >

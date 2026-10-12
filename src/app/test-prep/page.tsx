@@ -4,12 +4,14 @@ import CTA from "@/components/CTA";
 import SectionHeading from "@/components/ui/SectionHeading";
 import TestPrepCard from "@/components/TestPrepCard";
 import Testimonials from "@/components/Testimonials";
+import SocialProof from "@/components/SocialProof";
 import MobileBottomNav from "@/components/MobileBottomNav";
 import MobileBottomCTA from "@/components/MobileBottomCTA";
 import Image from "next/image";
 import { testPrepPrograms } from "@/data/testPrep";
 import { destinations } from "@/data/destinations";
 import prisma from "@/lib/db";
+import { useReveal } from "@/hooks/useReveal";
 
 export const dynamic = "force-dynamic";
 
@@ -91,23 +93,30 @@ export default async function TestPrepPage() {
           />
 
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {credentials.map((c) => (
-              <div key={c.title} className="reveal card flex flex-col items-start gap-3">
-                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-ocean/10 overflow-hidden">
-                  <Image
-                    src={c.logo}
-                    alt={c.title}
-                    width={48}
-                    height={48}
-                    className="h-full w-full object-contain"
-                  />
-                </span>
-                <div>
-                  <h3 className="font-display text-base font-bold text-ocean-deep">{c.title}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-mist-muted">{c.desc}</p>
+            {credentials.map((c, i) => {
+              const ref = useReveal<HTMLDivElement>({ threshold: 0.1 + i * 0.05 });
+              return (
+                <div
+                  key={c.title}
+                  ref={ref}
+                  className="reveal card flex flex-col items-start gap-3"
+                >
+                  <span className="grid h-12 w-12 place-items-center rounded-2xl bg-ocean/10 overflow-hidden">
+                    <Image
+                      src={c.logo}
+                      alt={c.title}
+                      width={48}
+                      height={48}
+                      className="h-full w-full object-contain"
+                    />
+                  </span>
+                  <div>
+                    <h3 className="font-display text-base font-bold text-ocean-deep">{c.title}</h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-mist-muted">{c.desc}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

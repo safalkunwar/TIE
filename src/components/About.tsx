@@ -36,7 +36,7 @@ export default function About() {
   return (
     <section id="about" className="section relative">
       <div className="container-x">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
+        <div className="grid items-start gap-12 lg:grid-cols-2">
           {/* Left — team photo with floating credential chips */}
           <div ref={imgRef} className="reveal relative">
             <div className="relative overflow-hidden rounded-5xl border border-ink-line bg-white shadow-card">
@@ -81,9 +81,9 @@ export default function About() {
                 </div>
               </div>
             </div>
-          </div>
+            </div>
 
-          {/* Right — story copy */}
+            {/* Right — story copy */}
           <div ref={ref} className="reveal flex flex-col items-start gap-6">
             <span className="eyebrow">
               <span className="h-px w-6 bg-ocean/50" />
@@ -119,41 +119,15 @@ export default function About() {
                       {p.title}
                     </div>
                      <div className="text-xs leading-relaxed text-mist-muted">
-                       {p.desc}
-                     </div>
-                   </div>
-                 </div>
-               ))}
-             </div>
-             {/* Mission & Vision */}
-             <div className="mt-6 grid gap-3 sm:grid-cols-2">
-               <div key="mission" className="reveal card flex flex-col items-start gap-3 rounded-2xl border border-ink-line bg-white/70 p-4 backdrop-blur">
-                 <Icon name="globe" className="h-6 w-6 text-ocean mb-2" />
-                 <h3 className="font-display font-bold text-ocean-deep">{company.mission}</h3>
-                 <ExpandableText text={company.mission} maxLines={2} />
-               </div>
-               <div key="vision" className="reveal card flex flex-col items-start gap-3 rounded-2xl border border-ink-line bg-white/70 p-4 backdrop-blur">
-                 <Icon name="trophy" className="h-6 w-6 text-ocean mb-2" />
-                 <h3 className="font-display font-bold text-ocean-deep">{company.vision}</h3>
-                 <ExpandableText text={company.vision} maxLines={2} />
-               </div>
-             </div>
-             {/* Leadership */}
-             <div className="mt-6 grid gap-3 sm:grid-cols-2">
-               <div key="md" className="reveal card flex flex-col items-start gap-3 rounded-2xl border border-ink-line bg-white/70 p-4 backdrop-blur">
-                 <Icon name="user" className="h-6 w-6 text-ocean mb-2" />
-                 <h3 className="font-display font-bold text-ocean-deep">Managing Director: {company.leadership.md}</h3>
-                 <p className="text-sm text-mist-muted">{company.foundedYear} – Pokhara, Nepal</p>
-               </div>
-               <div key="director" className="reveal card flex flex-col items-start gap-3 rounded-2xl border border-ink-line bg-white/70 p-4 backdrop-blur">
-                 <Icon name="cap" className="h-6 w-6 text-ocean mb-2" />
-                 <h3 className="font-display font-bold text-ocean-deep">Director: {company.leadership.director}</h3>
-                 <p className="text-sm text-mist-muted">Guiding students since {company.foundedYear}</p>
-               </div>
-             </div>
-           </div>
-         </div>
-       </div>
-     </section>
+                      {p.desc}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+      </section>
   );
 }

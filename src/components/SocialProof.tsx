@@ -5,6 +5,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Icon from "@/components/ui/Icon";
 import { company } from "@/data/company";
 import VideoTestimonials from "@/components/VideoTestimonial";
+import CredentialCard from "@/components/CredentialCard";
 
 type Props = {
   videoTestimonials?: Array<{
@@ -22,10 +23,6 @@ type Props = {
     published: boolean;
   }>;
 };
-
-const affiliationLogos = [
-  { src: "/gallery/membership.jpg", alt: "ECAN, ICEF, British Council, IDP, PTE, Duolingo, OET, Government of Nepal" },
-];
 
 const credentials = [
   {
@@ -66,28 +63,10 @@ export default function SocialProof({ videoTestimonials = [] }: Props) {
         />
 
         <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {credentials.map((c) => (
-            <div
-              key={c.title}
-              className="reveal card flex flex-col items-start gap-4 transition-transform duration-300 hover:-translate-y-1"
-            >
-              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-ocean/10 text-ocean">
-                <Icon name={c.icon} className="h-6 w-6" />
-              </span>
-              <div>
-                <h3 className="font-display text-lg font-bold text-ocean-deep">
-                  {c.title}
-                </h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-mist-muted">
-                  {c.desc}
-                </p>
-              </div>
-            </div>
+          {credentials.map((c, i) => (
+            <CredentialCard key={c.title} credential={c} index={i} />
           ))}
         </div>
-
-        {/* Video Testimonials */}
-        <VideoTestimonials videos={videoTestimonials} />
 
         {/* Partner ribbon */}
         <div className="mt-14 rounded-4xl border border-ink-line bg-white/60 py-8 shadow-blue-soft backdrop-blur">
@@ -104,35 +83,6 @@ export default function SocialProof({ videoTestimonials = [] }: Props) {
                 className="h-16 w-auto object-contain"
               />
             </div>
-          </div>
-        </div>
-        {/* Follow us strip */}
-        <div className="mt-8 flex flex-col items-center justify-between gap-4 rounded-4xl border border-ink-line bg-gradient-to-br from-sky-100/70 to-sky-200/50 px-7 py-6 sm:flex-row">
-          <div className="text-center sm:text-left">
-            <div className="font-display text-lg font-bold text-ocean-deep">
-              Follow the journey on social
-            </div>
-            <div className="text-sm text-mist-muted">
-              Real admits, scholarship wins & study-abroad tips — daily.
-            </div>
-          </div>
-          <div className="flex gap-3">
-            <a
-              href={company.social.facebook}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-ghost px-5 py-2.5"
-            >
-              <span className="text-sm font-bold">f</span> Facebook
-            </a>
-            <a
-              href={company.social.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-ghost px-5 py-2.5"
-            >
-              <span className="text-sm font-bold">IG</span> Instagram
-            </a>
           </div>
         </div>
       </div>

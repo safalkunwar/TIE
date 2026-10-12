@@ -1,15 +1,13 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Stats from "@/components/Stats";
-import MobileStats from "@/components/MobileStats";
 import About from "@/components/About";
 import Services from "@/components/Services";
 import Globe from "@/components/Globe";
 import Destinations from "@/components/Destinations";
 import DreamJourney from "@/components/DreamJourney";
 import Testimonials from "@/components/Testimonials";
+import VideoTestimonials from "@/components/VideoTestimonial";
 import SocialProof from "@/components/SocialProof";
-import Credentials from "@/components/Credentials";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import MobileBottomNav from "@/components/MobileBottomNav";
@@ -86,16 +84,14 @@ export default async function Home() {
       <Navbar countries={countries} />
       <main className="pb-20 lg:pb-0">
         <Hero />
-        <MobileStats />
-        <Stats />
         <About />
-        <Services />
         <Globe countries={countries} />
+        <Services />
         <Destinations countries={countries} />
         <DreamJourney />
         <Testimonials testimonials={testimonials} />
+        <VideoTestimonials videos={videoTestimonialsFormatted} />
         <SocialProof videoTestimonials={videoTestimonialsFormatted} />
-        <Credentials />
         <CTA countries={countries} />
       </main>
       <Footer />

@@ -167,8 +167,7 @@ export default function Navbar({ countries }: { countries?: any[] }) {
           </button>
         </div>
       </nav>
-
-      /* Mobile sheet */
+      {/* Mobile sheet */}
       <div
         className={`fixed inset-0 z-40 transition-all duration-300 lg:hidden ${
           open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"

@@ -15,7 +15,7 @@ export type VideoTestimonial = {
   quote?: string;
   videoUrl: string;
   thumbnailUrl: string;
-  photos?: string | null;
+  photos?: string | string[] | null;
   featured: boolean;
   displayOrder: number;
   published: boolean;
@@ -196,8 +196,9 @@ export default function VideoTestimonials({
   const published = videos.filter((v) => v.published);
 
   // Parse photos JSON strings to arrays
-  const parsePhotos = (photosJson?: string | null): string[] => {
+  const parsePhotos = (photosJson?: string | string[] | null): string[] => {
     if (!photosJson) return [];
+    if (Array.isArray(photosJson)) return photosJson;
     try {
       const parsed = JSON.parse(photosJson);
       return Array.isArray(parsed) ? parsed : [];
@@ -289,7 +290,7 @@ export default function VideoTestimonials({
   }
 
 return (
-    <section id="video-testimonials" className="section relative pt-24 pb-12">
+    <section id="video-testimonials" className="section relative pt-0 pb-0">
       <div className="container-x">
         <div className="grid gap-6 lg:grid-cols-3">
           <div className="lg:col-span-2">

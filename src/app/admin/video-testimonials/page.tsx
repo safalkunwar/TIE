@@ -12,8 +12,9 @@ import { logoutAdmin } from "../actions";
 
 export const dynamic = "force-dynamic";
 
-function parsePhotos(json: string | null | undefined): string[] {
+function parsePhotos(json: string | string[] | null | undefined): string[] {
   if (!json) return [];
+  if (Array.isArray(json)) return json;
   try {
     const parsed = JSON.parse(json);
     return Array.isArray(parsed) ? parsed : [];

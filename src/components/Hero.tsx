@@ -48,7 +48,13 @@ export default function Hero() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            videoRef.current?.play().catch(() => {});
+            // Only play if not on a metered connection or user preference
+            const navConn = (navigator as unknown as { connection?: { saveData: boolean; effectiveType: string } }).connection;
+            if (navConn?.saveData !== true && 
+                navConn?.effectiveType !== '2g' &&
+                navConn?.effectiveType !== 'slow-2g') {
+              videoRef.current?.play().catch(() => {});
+            }
           } else {
             videoRef.current?.pause();
           }
@@ -239,7 +245,7 @@ export default function Hero() {
           </div>
 
           {/* Headline with per-word reveal — dark text for premium contrast */}
-          <h1 className="font-display text-[clamp(2.6rem,8vw,6.5rem)] font-bold leading-[0.98] tracking-tightest text-mist [perspective:600px]">
+          <h1 className="font-display text-[clamp(2rem,12vw,6.5rem)] font-bold leading-[0.98] tracking-tightest text-mist [perspective:600px]">
             <span className="block">
               {headline.split(" ").map((word, i) => (
                 <span
@@ -277,8 +283,8 @@ export default function Hero() {
             data-hero-fade
             className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
           >
-            <MagneticButton href="/book">Book Free Consultation</MagneticButton>
-            <MagneticButton href="#globe" variant="ghost">
+            <MagneticButton href="/book" className="min-h-[44px]">Book Free Consultation</MagneticButton>
+            <MagneticButton href="#globe" variant="ghost" className="min-h-[44px]">
               <Icon name="globe" className="h-4 w-4" />
               Explore Destinations
             </MagneticButton>
