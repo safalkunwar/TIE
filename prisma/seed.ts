@@ -16,19 +16,7 @@ async function main() {
           name: d.name,
           flag: d.flag,
           tagline: d.tagline,
-          tuition: d.tuition,
-          intake: d.intake,
-          language: d.language,
-          workWhileStudying: d.workWhileStudying,
-          postStudyWork: d.postStudyWork,
-          scholarships: d.scholarships,
-          visaPathway: d.visaPathway,
-          image: d.image,
-          accent: d.accent,
-          lat: d.lat,
-          lng: d.lng,
-          universities: {
-            create: d.topUniversities.map((u) => ({
+ //this is in thetesting phase
               name: u,
             })),
           },
