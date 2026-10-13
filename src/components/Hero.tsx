@@ -295,7 +295,7 @@ export default function Hero() {
           <div
             data-hero-fade
             data-hero-parallax
-            className="hidden lg:flex mt-6 flex-wrap gap-3 justify-between"
+            className="hidden lg:flex mt-6 items-center justify-between"
           >
             {[
               { k: "97%", v: "Visa success rate" },
@@ -315,7 +315,7 @@ export default function Hero() {
                 </span>
               </div>
             ))}
-            <div className="glass-strong group flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-6 py-2.5 text-sm font-semibold text-ocean-deep transition-all duration-200 hover:border-gold/70 hover:bg-gold/20">
+            <div className="glass-strong flex items-center gap-2 rounded-full border border-ocean/40 bg-ocean/10 px-6 py-2.5 text-sm font-semibold text-ocean-deep transition-all duration-200 hover:border-ocean/70 hover:bg-ocean/20">
               <span aria-hidden>🏆</span>
               Scholarships available
               <span className="rounded-full bg-emerald-500/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-emerald-700">
