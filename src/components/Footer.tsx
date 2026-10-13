@@ -57,22 +57,42 @@ export default function Footer() {
               reality — one student at a time.
             </p>
             <div className="mt-5 flex gap-3">
-              {[
-                { label: "Facebook", href: company.social.facebook, glyph: "f" },
-                { label: "Instagram", href: company.social.instagram, glyph: "IG" },
-                { label: "Website", href: company.social.website, glyph: "W" },
-              ].map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={s.label}
-                  className="grid h-9 w-9 place-items-center rounded-full bg-sky-50 text-ocean transition-colors hover:bg-ocean hover:text-white"
-                >
-                  <span className="text-xs font-bold">{s.glyph}</span>
-                </a>
-              ))}
+              <a
+                href={company.social.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="grid h-9 w-9 place-items-center rounded-full bg-sky-50 text-ocean transition-colors hover:bg-ocean hover:text-white"
+              >
+                <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
+                  <path d="M13.397 2v.675c-.015.075-.03.15-.045.225h-1.8v-.225c0-.45.03-.675.06-.75h2.145v3.375h-2.4v2.7h2.25l.3-.6h.6v.6l-.3 2.7h-2.85V22h-3.3v-6.9h-2.4v-2.7h2.4v-1.8c0-2.7 1.35-4.5 4.05-4.5z" />
+                </svg>
+              </a>
+              <a
+                href={company.social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="grid h-9 w-9 place-items-center rounded-full bg-sky-50 text-ocean transition-colors hover:bg-ocean hover:text-white"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none" />
+                </svg>
+              </a>
+              <a
+                href={company.social.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Website"
+                className="grid h-9 w-9 place-items-center rounded-full bg-sky-50 text-ocean transition-colors hover:bg-ocean hover:text-white"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                </svg>
+              </a>
             </div>
           </div>
 

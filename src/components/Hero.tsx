@@ -291,6 +291,32 @@ export default function Hero() {
             <YearsStat />
           </div>
 
+          {/* Floating glass stat chips */}
+          <div
+            data-hero-fade
+            data-hero-parallax
+            className="hidden lg:flex mt-6 flex-wrap gap-3"
+          >
+            {[
+              { k: "97%", v: "Visa success rate" },
+              { k: "350+", v: "Partner universities" },
+              { k: "5,000+", v: "Students placed" },
+            ].map((chip) => (
+              <div
+                key={chip.k}
+                className="glass-strong flex items-center gap-3 rounded-2xl px-4 py-3 shadow-blue-soft"
+              >
+                <span className="font-display text-lg font-bold text-gradient-ocean">
+                  {chip.k}
+                </span>
+                <span className="h-7 w-px bg-mist/15" />
+                <span className="text-xs font-medium text-mist-muted">
+                  {chip.v}
+                </span>
+              </div>
+            ))}
+          </div>
+
           {/* Mobile trust badges */}
           <div className="mt-4 grid grid-cols-2 gap-2 lg:hidden">
             {[
@@ -321,32 +347,6 @@ export default function Hero() {
                 className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
               />
             </a>
-          </div>
-
-          {/* Floating glass stat chips */}
-          <div
-            data-hero-fade
-            data-hero-parallax
-            className="hidden lg:flex mt-16 flex-wrap gap-3"
-          >
-            {[
-              { k: "97%", v: "Visa success rate" },
-              { k: "350+", v: "Partner universities" },
-              { k: "5,000+", v: "Students placed" },
-            ].map((chip) => (
-              <div
-                key={chip.k}
-                className="glass-strong flex items-center gap-3 rounded-2xl px-4 py-3 shadow-blue-soft"
-              >
-                <span className="font-display text-lg font-bold text-gradient-ocean">
-                  {chip.k}
-                </span>
-                <span className="h-7 w-px bg-mist/15" />
-                <span className="text-xs font-medium text-mist-muted">
-                  {chip.v}
-                </span>
-              </div>
-            ))}
           </div>
         </div>
       </div>
