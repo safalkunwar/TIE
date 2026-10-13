@@ -291,11 +291,11 @@ export default function Hero() {
             <YearsStat />
           </div>
 
-          {/* Floating glass stat chips */}
+          {/* Floating glass stat chips + scholarships CTA */}
           <div
             data-hero-fade
             data-hero-parallax
-            className="hidden lg:flex mt-6 flex-wrap gap-3"
+            className="hidden lg:flex mt-6 flex-wrap gap-3 justify-between"
           >
             {[
               { k: "97%", v: "Visa success rate" },
@@ -315,6 +315,14 @@ export default function Hero() {
                 </span>
               </div>
             ))}
+            <div className="glass-strong group flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-6 py-2.5 text-sm font-semibold text-ocean-deep transition-all duration-200 hover:border-gold/70 hover:bg-gold/20">
+              <span aria-hidden>🏆</span>
+              Scholarships available
+              <span className="rounded-full bg-emerald-500/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-emerald-700">
+                up to 60%
+              </span>
+              <Icon name="arrow" className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+            </div>
           </div>
 
           {/* Mobile trust badges */}
@@ -329,24 +337,6 @@ export default function Hero() {
                 <span className="text-xs font-bold text-ocean-deep">{badge.label}</span>
               </div>
             ))}
-          </div>
-
-          {/* Scholarships quick link → consultation flow */}
-          <div data-hero-fade className="mt-4">
-            <a
-              href="/book"
-              className="group inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-4 py-2 text-sm font-semibold text-ocean-deep transition-all duration-200 hover:border-gold/70 hover:bg-gold/20"
-            >
-              <span aria-hidden>🏆</span>
-              Scholarships available
-              <span className="rounded-full bg-emerald-500/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-emerald-700">
-                up to 60%
-              </span>
-              <Icon
-                name="arrow"
-                className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
-              />
-            </a>
           </div>
         </div>
       </div>
